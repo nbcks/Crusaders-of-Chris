@@ -108,6 +108,6 @@ func _process(delta):
 		for i in range(8):
 			if players[i]:
 				if Input.is_joy_button_pressed(i, JOY_START):
-					get_node("/root/scene_switcher").goto_scene_map(map_to_path(cur_map_selected))
+					get_node("/root/scene_switcher").goto_scene(map_to_path(cur_map_selected))
 	else:
 		get_node("start").hide()

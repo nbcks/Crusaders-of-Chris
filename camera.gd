@@ -99,8 +99,8 @@ func test5():
 var CAMERA_MARGIN = 64 * 6 # Number of pixels to expand the rectangle
 var MIN_ZOOM = 1 # Minimum zoom, so if players are close, it wont zoom in too much	
 func test6():
-	var pl1 = get_parent().get_node("players/possum1").get_pos()
-	var pl2 = get_parent().get_node("players/possum2").get_pos()
+	var pl1 = get_parent().get_node("players").get_child(0).get_pos()
+	var pl2 = get_parent().get_node("players").get_child(1).get_pos()
 	
 	 # Create rectangle at pl1, then expand to fit pl2
 	var rect = Rect2(pl1, Vector2())

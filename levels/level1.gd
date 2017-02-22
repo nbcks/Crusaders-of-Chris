@@ -1,9 +1,29 @@
 extends Node
 
+var player_vars
+var no_players = 0
+
 func player_health(health, no):
 	get_node("ui/player%d_health" % no).set_text("player%d health: %d%%" % [no, health])
 
 func _ready():
+	player_vars = get_node("/root/player_variables")
+	var active_players = player_vars.active_players
+	var selected_chars_players = player_vars.selected_chars_players
+	
+	var i = 0
+	var player
+	var path
+	for active in active_players:
+		if active:
+			path = player_vars.player_to_path(selected_chars_players[i])
+			player = ResourceLoader.load(path).instance()
+			get_node("players").add_child(player)
+			player.set_global_pos(get_node("spawns").get_child(i).get_global_pos())
+			no_players += 1
+			
+	print("added %d players" % no_players)
+	
 	# set player numbers
 	var i = 0
 	for player in get_node("players").get_children():
@@ -23,5 +43,6 @@ func chuck_to_centre(body):
 		body.set_velocity(Vector2())
 	
 func change_state(state, playerno):
-	print("player ", playerno, " ", get_node("players/possum1").state_name(state))
+	#print("player ", playerno, " ", get_node("players/possum1").state_name(state))
+	pass
 	
