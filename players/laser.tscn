@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://players/laser.gd" type="Script" id=1]
+[ext_resource path="res://art/players/laser.png" type="Texture" id=2]
+[ext_resource path="res://players/laser_hurtbox.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 9.60577, 2.01215 )
+
+[node name="laser" type="KinematicBody2D"]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.3, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="area" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -3.45149, -1.25165 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 3 )
+
+[node name="col_rect" type="CollisionShape2D" parent="area"]
+
+transform/pos = Vector2( -3.45149, -1.25165 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="pos" type="Position2D" parent="area"]
+
+transform/pos = Vector2( -11.7726, -1.07723 )
+
+

@@ -1,0 +1,32 @@
+
+
+feature list for CoC:
+shield
+shoot
+melee
+smash
+walk 
+dash
+momentum
+
+levels:
+gangster level
+seb's head
+Anand's dads room of study
+
+
+todo list for CoC:
+
+1. 
+attacking from walking
+no default invincibility
+move through characters
+better camera
+
+2. ui enchancements
+- proper font
+- 
+
+2. add grendier Chris and biker Nahom
+
+3. levels - pleasant one, bridge and huge crumpet
