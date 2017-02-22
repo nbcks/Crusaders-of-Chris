@@ -10,7 +10,8 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_pressed("player1_melee"):
-		get_tree().change_scene("res://melee.tscn")
+		get_node("/root/scene_switcher").goto_scene("res://melee.tscn")
+		#get_tree().change_scene("res://melee.tscn")
 	
 
 

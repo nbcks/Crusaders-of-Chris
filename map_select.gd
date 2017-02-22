@@ -17,6 +17,16 @@ const MOUSE_X_MIN = 0
 const MOUSE_Y_MAX = 1080
 const MOUSE_Y_MIN = 0
 const MOUSE_MIN_INPUT = 0.4
+
+var cur_map_selected = -1
+
+const TESTING = 0
+
+func map_to_path(no):
+	if no == TESTING:
+		return "res://levels/level1.tscn"
+	else:
+		breakpoint
 	
 
 func move_mice():
@@ -53,7 +63,51 @@ func move_mice():
 			
 			mouse.set_global_pos( mouse_pos + Vector2(x_axis * MOUSE_SPEED, y_axis * MOUSE_SPEED) )
 
+# take a global position vector, if it's in 
+# a map, return the index, else return -1
+func pos_in_avatar(pos):
+	var i = 0
+	var no_maps = get_node("maps").get_child_count()
+	var cur_map
+	while i < no_maps:
+		cur_map = get_node("maps").get_child(i)
+		
+		var min_x = cur_map.get_node("min_point").get_global_pos().x
+		var min_y = cur_map.get_node("min_point").get_global_pos().y
+		var max_x = cur_map.get_node("max_point").get_global_pos().x
+		var max_y = cur_map.get_node("max_point").get_global_pos().y
+		
+		if pos.x >= min_x and pos.x <= max_x and pos.y >= min_y and pos.y <= max_y:
+			return i
+			
+		i += 1
+		
+	return -1
 	
+func update_selected_maps():
+	var players = get_node("/root/player_variables").active_players
+	
+	for i in range(8):
+		if players[i]:
+			var mouse_pos = get_node("cursor").get_node("click").get_global_pos()
+			
+			var selected_map = pos_in_avatar(mouse_pos)
+			
+			if selected_map != -1:
+				if Input.is_joy_button_pressed(i, JOY_XBOX_A):
+					cur_map_selected = selected_map
 func _process(delta):
+	var players = get_node("/root/player_variables").active_players
 	
 	move_mice()
+
+	update_selected_maps()
+	
+	if cur_map_selected != -1:
+		get_node("start").show()
+		for i in range(8):
+			if players[i]:
+				if Input.is_joy_button_pressed(i, JOY_START):
+					get_node("/root/scene_switcher").goto_scene_map(map_to_path(cur_map_selected))
+	else:
+		get_node("start").hide()

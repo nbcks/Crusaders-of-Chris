@@ -76,7 +76,7 @@ func update_selected_chars():
 	for i in range(8):
 		if players[i]:
 			var mouse = get_node("mice").get_child(i)
-			var mouse_pos = mouse.get_global_pos()
+			var mouse_pos = mouse.get_node("click").get_global_pos()
 			
 			var selected_char = pos_in_avatar(mouse_pos)
 			
@@ -98,24 +98,12 @@ func are_we_ready():
 			players_active += 1
 		if selected_chars[i] >= 0:
 			players_selected += 1
-	
+	var ready = players_active >= 2 and players_selected == players_active
 	get_node("ready").set_text("active players: %d\nselected characters: %d\nready: %s" % [players_active, players_selected, ready])
 		
-	return players_active >= 2 and players_selected == players_active
+	return ready
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	players = []
-	players.resize(8)
-	for i in range(8):
-		players[i] = false
-		
-	selected_chars = []
-	selected_chars.resize(8)
-	for i in range(8):
-		selected_chars[i] = -1
-		
 	set_process(true)
 	
 func _process(delta):
@@ -132,7 +120,7 @@ func _process(delta):
 		get_node("start").show()
 		for i in range(8):
 			if Input.is_joy_button_pressed(i, JOY_START):
-				print("starting and start was pressed")
+				get_node("/root/scene_switcher").goto_scene("res://map_select.tscn")
 	else:
 		get_node("start").hide()
 		

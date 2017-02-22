@@ -159,6 +159,10 @@ transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
 texture = ExtResource( 8 )
 
+[node name="click" type="Position2D" parent="mice/p1"]
+
+transform/pos = Vector2( 10.7022, -34.7228 )
+
 [node name="p2" type="Node2D" parent="mice"]
 
 transform/pos = Vector2( -600.811, 236.879 )
@@ -181,6 +185,10 @@ visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
 texture = ExtResource( 9 )
+
+[node name="click" type="Position2D" parent="mice/p2"]
+
+transform/pos = Vector2( 10.7022, -34.7228 )
 
 [node name="p3" type="Node2D" parent="mice"]
 
@@ -205,6 +213,10 @@ transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
 texture = ExtResource( 10 )
 
+[node name="click" type="Position2D" parent="mice/p3"]
+
+transform/pos = Vector2( 10.94, -34.4849 )
+
 [node name="p4" type="Node2D" parent="mice"]
 
 transform/pos = Vector2( -230.811, 236.879 )
@@ -227,6 +239,10 @@ visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
 texture = ExtResource( 11 )
+
+[node name="click" type="Position2D" parent="mice/p4"]
+
+transform/pos = Vector2( 9.98865, -33.0579 )
 
 [node name="p5" type="Node2D" parent="mice"]
 
@@ -251,6 +267,10 @@ transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
 texture = ExtResource( 12 )
 
+[node name="click" type="Position2D" parent="mice/p5"]
+
+transform/pos = Vector2( 9.27527, -33.7714 )
+
 [node name="p6" type="Node2D" parent="mice"]
 
 transform/pos = Vector2( 100, 236.879 )
@@ -273,6 +293,10 @@ visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
 texture = ExtResource( 13 )
+
+[node name="click" type="Position2D" parent="mice/p6"]
+
+transform/pos = Vector2( 9.51306, -34.4849 )
 
 [node name="p7" type="Node2D" parent="mice"]
 
@@ -297,6 +321,10 @@ transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
 texture = ExtResource( 14 )
 
+[node name="click" type="Position2D" parent="mice/p7"]
+
+transform/pos = Vector2( 10.2266, -33.7714 )
+
 [node name="p8" type="Node2D" parent="mice"]
 
 transform/pos = Vector2( 400, 236.879 )
@@ -319,6 +347,10 @@ visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
 texture = ExtResource( 15 )
+
+[node name="click" type="Position2D" parent="mice/p8"]
+
+transform/pos = Vector2( 9.75098, -34.2471 )
 
 [node name="ready" type="Label" parent="."]
 

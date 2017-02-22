@@ -25,4 +25,3 @@ func chuck_to_centre(body):
 func change_state(state, playerno):
 	print("player ", playerno, " ", get_node("players/possum1").state_name(state))
 	
-	
