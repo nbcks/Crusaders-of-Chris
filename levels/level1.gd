@@ -18,17 +18,26 @@ func _ready():
 		if active:
 			path = player_vars.player_to_path(selected_chars_players[i])
 			player = ResourceLoader.load(path).instance()
+			
 			get_node("players").add_child(player)
 			player.set_global_pos(get_node("spawns").get_child(i).get_global_pos())
 			player.set_player_no(i+1)
 			print("set player no: %d" % (i + 1))
+			
 			player.connect("health_set", self, "player_health")
 			player.connect("state_change", self, "change_state")
+		
+			var melee_ui = get_node("melee_ui")
+			melee_ui.register_player(i + 1, player)
+			melee_ui.set_player_health(i + 1, 0)
+			melee_ui.set_player_lives(i + 1, 5)
+			
 			no_players += 1
 			
 		i += 1
 			
 	get_node("blast_area").connect("body_enter", self, "chuck_to_centre")
+	get_node("melee_ui").activate_camera()
 
 	
 func chuck_to_centre(body):
