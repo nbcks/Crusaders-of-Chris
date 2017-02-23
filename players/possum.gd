@@ -64,19 +64,6 @@ func set_health(x):
 	
 var health_pc = 0
 
-#control:
-#these are strings which refer to the 
-#(hopefully) the button for this instance
-
-var jump_ctrl = null
-var shoot_ctrl = null
-var shield_ctrl = null
-var melee_ctrl = null
-var special_ctrl = null
-
-var left_ctrl = null
-var right_ctrl = null
-
 # control values - these keep track of what buttons are
 # actually pressed
 
@@ -152,28 +139,21 @@ func set_state(state):
 	emit_signal("state_change", state, player_no)
 
 func set_player_no(player_no):
-	jump_ctrl = "player%d_jump" % player_no
-	shoot_ctrl = "player%d_shoot" % player_no
-	shield_ctrl = "player%d_shield" % player_no
-	melee_ctrl = "player%d_melee" % player_no
-	special_ctrl = "player%d_special" % player_no
-	
-	left_ctrl = "player%d_left" % player_no
-	right_ctrl = "player%d_right" % player_no
-	
 	self.player_no = player_no
 	self.controller_no = player_no - 1
 	
+const MIN_JOY = 0.4
 func update_ctrls():
 	
 	# set current key presses
-	var right = Input.is_action_pressed(right_ctrl)
-	var left = Input.is_action_pressed(left_ctrl)
-	var jump = Input.is_action_pressed(jump_ctrl)
-	var shoot = Input.is_action_pressed(shoot_ctrl)
-	var shield = Input.is_action_pressed(shield_ctrl)
-	var melee = Input.is_action_pressed(melee_ctrl)
-	var special = Input.is_action_pressed(special_ctrl)
+	var right = Input.get_joy_axis(controller_no, 0) >= MIN_JOY
+	var left = Input.get_joy_axis(controller_no, 0) <= -MIN_JOY
+	var jump = Input.is_joy_button_pressed(controller_no, JOY_XBOX_Y)
+	var shoot = Input.is_joy_button_pressed(controller_no, JOY_XBOX_X)
+	var shield = Input.is_joy_button_pressed(controller_no, JOY_R2)
+	var melee = Input.is_joy_button_pressed(controller_no, JOY_XBOX_A)
+	#var special = Input.is_joy_button_pressed(controller_no, JOY_XBOX_X)
+	var special = false
 	
 	# set controls
 	# set old key presses

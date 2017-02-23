@@ -109,6 +109,7 @@ stretch_mode = 0
 
 [node name="ground" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 410.833, 390.427 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -170,6 +171,7 @@ trigger = false
 
 [node name="moving_platform" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 890, 389.359 )
 input/pickable = false
 shapes/0/shape = SubResource( 6 )
@@ -244,6 +246,7 @@ max_lines_visible = -1
 
 [node name="blast_area" type="Area2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 793.022, 161.122 )
 input/pickable = true
 shapes/0/shape = SubResource( 8 )

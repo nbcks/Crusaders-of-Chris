@@ -20,18 +20,14 @@ func _ready():
 			player = ResourceLoader.load(path).instance()
 			get_node("players").add_child(player)
 			player.set_global_pos(get_node("spawns").get_child(i).get_global_pos())
+			player.set_player_no(i+1)
+			print("set player no: %d" % (i + 1))
+			player.connect("health_set", self, "player_health")
+			player.connect("state_change", self, "change_state")
 			no_players += 1
 			
-	print("added %d players" % no_players)
-	
-	# set player numbers
-	var i = 0
-	for player in get_node("players").get_children():
 		i += 1
-		player.set_player_no(i)
-		player.connect("health_set", self, "player_health")
-		player.connect("state_change", self, "change_state")
-	
+			
 	get_node("blast_area").connect("body_enter", self, "chuck_to_centre")
 
 	

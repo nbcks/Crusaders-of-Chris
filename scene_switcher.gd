@@ -1,7 +1,9 @@
 extends Node
 
 var cur_scene = null
-
+# this shouldn't really be here
+# but it's the pos of music in the melee screen
+var melee_map_select_music_pos = 0
 
 func goto_scene(path):
 	
@@ -13,6 +15,9 @@ func goto_scene(path):
 	
 	# The way around this is deferring the load to a later time, when
 	# it is ensured that no code from the current scene is running:
+	
+	if cur_scene.get_name() == "melee":
+		melee_map_select_music_pos = cur_scene.get_node("music").get_pos()
 	
 	call_deferred("_deferred_goto_scene",path)
 
@@ -29,12 +34,16 @@ func _deferred_goto_scene(path):
 	# Instance the new scene
 	cur_scene = s.instance()
 	
+	
 	# Add it to the active scene, as child of root
 	get_tree().get_root().add_child(cur_scene)
 	
 	# optional, to make it compatible with the SceneTree.change_scene() API
 	get_tree().set_current_scene( cur_scene )
 	
+	if cur_scene.get_name() == "map_select":
+		cur_scene.get_node("music").play(melee_map_select_music_pos)
+		
 
 func _ready():
 	var root = get_tree().get_root()

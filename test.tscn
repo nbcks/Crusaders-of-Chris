@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node2D\n\n# class member variables go here, for example:\n# var a = 2\n# var b = \"textvar\"\n\nfunc _ready():\n\t# Called every time the node is added to the scene.\n\t# Initialization here\n\tset_process(true)\n\t\n\t\nfunc get_ctrls(i):\n\tvar result = \"\"\n\t\n\tresult += \"Controller input %d\\n\" % i\n\t\n\tif Input.is_joy_button_pressed(i, JOY_XBOX_A):\n\t\tresult += \"A is being pressed\\n\"\n\t\n\tif Input.is_joy_button_pressed(i, JOY_XBOX_B):\n\t\tresult += \"B is being pressed\\n\"\n\t\t\n\tif Input.is_joy_button_pressed(i, JOY_START):\n\t\tresult += \"start is being pressed\\n\"\n\t\n\tif abs(Input.get_joy_axis(i, 0)) > 0.4 or abs(Input.get_joy_axis(i, 1)) > 0.4:\n\t\tresult += \"left axis being moved (significantly)\\n\"\n\t\t\n\tif abs(Input.get_joy_axis(i, 2)) > 0.4 or abs(Input.get_joy_axis(i, 3)) > 0.4:\n\t\tresult += \"right axis being moved (significantly)\\n\"\n\t\n\tresult += \"\\n\\n\"\n\t\n\treturn result\n\t\t\n\t\nvar text\nfunc _process(delta):\n\ttext = \"\"\n\t\n\tfor i in range(8):\n\t\ttext += get_ctrls(i)\n\t\n\tget_node(\"lab\").set_text(text)"
+
+[node name="test" type="Node2D"]
+
+script/script = SubResource( 1 )
+
+[node name="lab" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 529.0
+margin/top = 249.0
+margin/right = 1464.0
+margin/bottom = 967.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
