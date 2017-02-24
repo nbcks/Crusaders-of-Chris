@@ -64,6 +64,15 @@ func set_health(x):
 	
 var health_pc = 0
 
+signal lives_set(lives, player_no)
+
+func set_lives(no):
+	lives = no
+	emit_signal("lives_set", lives, player_no)
+
+var lives = 0
+
+
 # control values - these keep track of what buttons are
 # actually pressed
 

@@ -1,7 +1,8 @@
 extends Node2D
 
 const MAX_LIVES = 5
-const MAX_DIGITS = 3
+# includes percentage sign
+const MAX_DIGITS = 4
 
 func _ready():
 	# hide all the scores
@@ -41,13 +42,25 @@ func set_player_health(player_no, health):
 	var numbers = player_node.get_node("number")
 	
 	var redun = get_redundant_digits(digits_health)
-	if redun == MAX_DIGITS: # i.e if digits_health = [0, 0, 0]
-		pass
-	else:
-		var i = redun # this tracks digits_health
-		var dp = 0 # this tracks position in pictorial digits
-		var pic
+	var i = redun # this tracks digits_health
+	var dp = 0 # this tracks position in pictorial digits
+	
+	if redun == (MAX_DIGITS - 1): # i.e if digits_health = [0, 0, 0]
+		numbers.get_child(0).show()
+		numbers.get_child(0).set_texture(zero)
+		
+		numbers.get_child(1).set_texture(percent)
+		numbers.get_child(1).show()
+		
+		i = 2
 		while i < MAX_DIGITS:
+			numbers.get_child(i).hide()
+			i += 1
+			
+	else:
+		var pic
+		i = redun
+		while i < MAX_DIGITS - 1:
 			pic = num_to_pic(digits_health[i])
 			numbers.get_child(dp).show()
 			numbers.get_child(dp).set_texture(pic)

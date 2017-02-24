@@ -32,7 +32,6 @@ softness = 0.0
 [node name="StaticBody2D 2" type="StaticBody2D" parent="."]
 
 transform/pos = Vector2( 66.3974, 396.217 )
-transform/scale = Vector2( 1, 1 )
 input/pickable = false
 collision/layers = 1
 collision/mask = 1

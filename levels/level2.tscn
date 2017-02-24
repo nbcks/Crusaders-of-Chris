@@ -58,7 +58,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = { "times":FloatArray( 0, 5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 359.0 ] }
 
-[node name="level2" type="Node"]
+[node name="level2" type="Node2D"]
 
 [node name="bg" type="TextureFrame" parent="."]
 
