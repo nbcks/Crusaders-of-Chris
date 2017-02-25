@@ -106,7 +106,7 @@ var shield_elapsed_time = 0
 var cur_shield_scale = 1
 
 
-static func state_name(state):
+func state_name(state):
 	if state == AIRBOURNE:
 		return "airbourne"
 	elif state == ATTACKING:

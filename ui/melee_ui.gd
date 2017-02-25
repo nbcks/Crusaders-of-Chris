@@ -69,6 +69,8 @@ func set_player_health(player_no, health):
 		
 		# set last digit to percentage
 		numbers.get_child(dp).set_texture(percent)
+		numbers.get_child(dp).show()
+		dp += 1
 		
 		# hide the rest of the digits
 		while dp < MAX_DIGITS:
