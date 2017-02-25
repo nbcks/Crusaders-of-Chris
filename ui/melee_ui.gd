@@ -13,10 +13,21 @@ func register_player(player_no, player_node):
 	assert(player_node != null)
 	get_node("scores/scores").get_child(player_no - 1).show()
 	
-	get_node("cam").add_player(player_node)
+	#get_node("cam").add_player(player_node)
 	
 func activate_camera():
 	get_node("cam").activate()
+	
+func set_victory_no(no):
+	get_node("scores/victory/n").set_texture(num_to_pic(no))
+	get_node("scores/victory").show()
+	set_process(true)
+	
+# at the moment, this is only run on victory
+func _process(delta):
+	for i in range(get_node("/root/player_variables").MAX_NUM_PLAYERS):
+		if Input.is_joy_button_pressed(i, JOY_START):
+			get_node("/root/scene_switcher").goto_scene("res://title_screen.tscn")
 	
 # give the player number 1 BASED (not 0th based)
 # give the 

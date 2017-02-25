@@ -1,13 +1,11 @@
 extends Control
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var players
+var player_vars
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	
+	player_vars = get_node("/root/player_variables")
+	players = player_vars.players
 	
 	set_process(true)
 	
@@ -27,13 +25,10 @@ func map_to_path(no):
 		return "res://levels/level1.tscn"
 	else:
 		breakpoint
-	
 
 func move_mice():
-	var players = get_node("/root/player_variables").active_players
-	players[0] = true # DEBUG
 	for i in range(get_node("/root/player_variables").MAX_NUM_PLAYERS):
-		if players[i]:
+		if players[i]["active"]:
 			var x_axis = Input.get_joy_axis(i, 0)
 			var y_axis = Input.get_joy_axis(i, 1)
 			
@@ -85,10 +80,9 @@ func pos_in_avatar(pos):
 	return -1
 	
 func update_selected_maps():
-	var players = get_node("/root/player_variables").active_players
 	
 	for i in range(get_node("/root/player_variables").MAX_NUM_PLAYERS):
-		if players[i]:
+		if players[i]["active"]:
 			var mouse_pos = get_node("cursor").get_node("click").get_global_pos()
 			
 			var selected_map = pos_in_avatar(mouse_pos)
@@ -96,9 +90,8 @@ func update_selected_maps():
 			if selected_map != -1:
 				if Input.is_joy_button_pressed(i, JOY_XBOX_A):
 					cur_map_selected = selected_map
+					
 func _process(delta):
-	var player_vars = get_node("/root/player_variables") 
-	var players = player_vars.active_players
 	
 	move_mice()
 
@@ -107,7 +100,7 @@ func _process(delta):
 	if cur_map_selected != -1:
 		get_node("start").show()
 		for i in range(player_vars.MAX_NUM_PLAYERS):
-			if players[i]:
+			if players[i]["active"]:
 				if Input.is_joy_button_pressed(i, JOY_START):
 					get_node("/root/scene_switcher").goto_scene(map_to_path(cur_map_selected))
 	else:

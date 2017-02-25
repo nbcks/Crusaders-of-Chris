@@ -7,17 +7,17 @@ const MOUSE_Y_MAX = 1080
 const MOUSE_Y_MIN = 0
 const MOUSE_MIN_INPUT = 0.4
 
+var players
+
 func activate_players():
-	var players = get_node("/root/player_variables").active_players
 	for i in range(get_node("/root/player_variables").MAX_NUM_PLAYERS):
-		if not players[i] and Input.is_joy_button_pressed(i, JOY_XBOX_A):
-			players[i] = true
+		if not players[i]["active"] and Input.is_joy_button_pressed(i, JOY_XBOX_A):
+			players[i]["active"] = true
 			print("player %d active!" % (i + 1))
 
 func move_mice():
-	var players = get_node("/root/player_variables").active_players
 	for i in range(get_node("/root/player_variables").MAX_NUM_PLAYERS):
-		if players[i]:
+		if players[i]["active"]:
 			var x_axis = Input.get_joy_axis(i, 0)
 			var y_axis = Input.get_joy_axis(i, 1)
 			
@@ -71,10 +71,8 @@ func pos_in_avatar(pos):
 	
 
 func update_selected_chars():
-	var players = get_node("/root/player_variables").active_players
-	var selected_chars = get_node("/root/player_variables").selected_chars_players
 	for i in range(get_node("/root/player_variables").MAX_NUM_PLAYERS):
-		if players[i]:
+		if players[i]["active"]:
 			var mouse = get_node("mice").get_child(i)
 			var mouse_pos = mouse.get_node("click").get_global_pos()
 			
@@ -82,28 +80,24 @@ func update_selected_chars():
 			
 			if selected_char != -1:
 				if Input.is_joy_button_pressed(i, JOY_XBOX_A):
-					selected_chars[i] = selected_char
+					players[i]["character"] = selected_char
 			
-
-var players_active = 0
-var players_selected = 0
 func are_we_ready():
-	var players = get_node("/root/player_variables").active_players
-	var selected_chars = get_node("/root/player_variables").selected_chars_players
-	
-	players_active = 0
-	players_selected = 0
+	var players_active = 0
+	var players_selected = 0
 	for i in range(get_node("/root/player_variables").MAX_NUM_PLAYERS):
-		if players[i]:
+		if players[i]["active"]:
 			players_active += 1
-		if selected_chars[i] >= 0:
+		if players[i]["character"] >= 0:
 			players_selected += 1
 	var ready = players_active >= 2 and players_selected == players_active
+	
 	get_node("ready").set_text("active players: %d\nselected characters: %d\nready: %s" % [players_active, players_selected, ready])
 		
 	return ready
 
 func _ready():
+	players = get_node("/root/player_variables").players
 	get_node("/root/scene_switcher").melee_map_select_music_pos = 0
 	set_process(true)
 	
