@@ -2,7 +2,7 @@
 
 [ext_resource path="res://players/possum.gd" type="Script" id=1]
 [ext_resource path="res://art/players/shield.png" type="Texture" id=2]
-[ext_resource path="res://art/characters/possum/hit3_adjusted.png" type="Texture" id=3]
+[ext_resource path="res://art/characters/possum/hit1.png" type="Texture" id=3]
 [ext_resource path="res://art/characters/possum/static1.png" type="Texture" id=4]
 [ext_resource path="res://art/characters/possum/static2.png" type="Texture" id=5]
 [ext_resource path="res://art/characters/possum/static3.png" type="Texture" id=6]
@@ -13,7 +13,7 @@
 [ext_resource path="res://art/characters/possum/jump4.png" type="Texture" id=11]
 [ext_resource path="res://art/characters/possum/jump-kick.png" type="Texture" id=12]
 [ext_resource path="res://art/characters/possum/hit2.png" type="Texture" id=13]
-[ext_resource path="res://art/characters/possum/hit1.png" type="Texture" id=14]
+[ext_resource path="res://art/characters/possum/hit3_adjusted.png" type="Texture" id=14]
 [ext_resource path="res://art/characters/possum/walk4.png" type="Texture" id=15]
 [ext_resource path="res://art/characters/possum/walk1.png" type="Texture" id=16]
 [ext_resource path="res://art/characters/possum/walk2.png" type="Texture" id=17]
@@ -240,7 +240,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 3 ), ExtResource( 13 ), ExtResource( 14 ) ] }
+tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 3 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 3 ) ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:flip_h")
 tracks/1/interp = 1
@@ -303,7 +303,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 3 ), ExtResource( 13 ), ExtResource( 14 ) ] }
+tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 3 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 3 ) ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:flip_h")
 tracks/1/interp = 1
@@ -445,7 +445,6 @@ transform/pos = Vector2( 2, 3 )
 
 [node name="col_rect" type="CollisionPolygon2D" parent="."]
 
-visibility/visible = false
 transform/pos = Vector2( -5.98061, 2.42073 )
 build_mode = 0
 polygon = Vector2Array( -14.1413, -9.63717, -7.5303, -12.8847, -11.5897, -21.4674, -3.23896, -32.0217, 12.4186, -32.8336, 22.7411, -27.3825, 26.5685, -21.0034, 24.0169, -7.89744, 30.3959, 10.3118, 29.3574, 12.3403, 18.5624, 9.51304, 26.5302, 26.4767, 26.0161, 28.0188, 21.3897, 29.4324, 18.4339, 28.4043, 16.2492, 28.1473, 15.8637, 26.4767, 18.3054, 24.1634, 12.3938, 19.1515, 9.56657, 14.3965, 5.7112, 15.1676, 5.32566, 19.537, 6.7393, 25.063, 5.7112, 27.5047, 2.62691, 28.4043, -3.15614, 28.5328, -6.75448, 28.2758, -7.26853, 26.2196, -4.31275, 24.9345, -0.714405, 24.549, -1.22845, 20.051, -3.54168, 17.3523, -0.585896, 11.5692, 5.19715, 8.35643, 3.26947, 3.34446, -3.02762, 9.25602, -9.45324, 11.5692, -14.0797, 5.14363, -17.421, 4.75809, -19.0916, 1.80231, -16.2644, -1.92454, -14.3367, -3.85223, -12.0235, -2.95264, -10.2243, 0.774213, -8.29662, 4.62958, -1.09994, -2.69562, -4.58253, -5.8512, -14.5226, -7.58677 )
@@ -455,7 +454,6 @@ trigger = false
 [node name="hitbox" type="Area2D" parent="."]
 
 editor/display_folded = true
-visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 17 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 2.43687, 0 )
@@ -528,12 +526,14 @@ autoplay = ""
 
 [node name="hurtboxes" type="Node2D" parent="."]
 
+editor/display_folded = true
+
 [node name="punch" type="Area2D" parent="hurtboxes"]
 
 transform/pos = Vector2( -0.858551, 0.858555 )
 input/pickable = true
-shapes/0/shape = SubResource( 26 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 22.5698, 4.13203 )
+shapes/0/shape = SubResource( 27 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.35635, -2.98302 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -543,8 +543,8 @@ script/script = ExtResource( 19 )
 
 [node name="col_rect" type="CollisionShape2D" parent="hurtboxes/punch"]
 
-transform/pos = Vector2( 22.5698, 4.13203 )
-shape = SubResource( 26 )
+transform/pos = Vector2( -0.35635, -2.98302 )
+shape = SubResource( 27 )
 trigger = false
 _update_shape_index = 0
 

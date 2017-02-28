@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://title_screen.gd" type="Script" id=1]
-[ext_resource path="res://art/backgrounds/titlescreen.jpg" type="Texture" id=2]
+[ext_resource path="res://art/backgrounds/title_screen.png" type="Texture" id=2]
 [ext_resource path="res://art/backgrounds/chris.png" type="Texture" id=3]
 [ext_resource path="res://art/backgrounds/crusaders.png" type="Texture" id=4]
-[ext_resource path="res://music/ambientmain_0.ogg" type="AudioStream" id=5]
+[ext_resource path="res://music/The Last Encounter Long Loop.ogg" type="AudioStream" id=5]
 
 [node name="title_screen" type="Control"]
 
@@ -26,11 +26,10 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 7.0
-margin/right = 1279.0
-margin/bottom = 721.0
+margin/right = 1920.0
+margin/bottom = 1087.0
 texture = ExtResource( 2 )
-expand = true
-stretch_mode = 0
+stretch_mode = 3
 
 [node name="title" type="Control" parent="."]
 
@@ -39,10 +38,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 576.0
-margin/top = 45.0
-margin/right = 616.0
-margin/bottom = 85.0
+margin/left = 851.0
+margin/top = 230.0
+margin/right = 891.0
+margin/bottom = 270.0
 
 [node name="TextureFrame" type="TextureFrame" parent="title"]
 
@@ -75,7 +74,7 @@ stretch_mode = 0
 stream/stream = ExtResource( 5 )
 stream/play = false
 stream/loop = true
-stream/volume_db = 10.0
+stream/volume_db = 0.0
 stream/autoplay = true
 stream/paused = false
 stream/loop_restart_time = 0.0

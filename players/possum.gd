@@ -102,6 +102,8 @@ const MAX_SHIELD_LENGTH = 2
 const MAX_SHIELD_SCALE = 0.8
 const SHIELD_REGEN = 0.7
 const SHIELD_DEGEN = 0.8
+const SHIELD_STUN = 2.0
+
 var shield_elapsed_time = 0
 var cur_shield_scale = 1
 
@@ -211,8 +213,7 @@ func _fixed_process(delta):
 	elif cur_state == IDLE:
 		update_state_idle(delta)
 	elif cur_state == STUNNED: # consider removal
-		# player can't do anything
-		pass
+		update_state_stunned(delta)
 	elif cur_state == STOPPING:
 		update_state_stopping(delta)
 	elif cur_state == TAKE:
@@ -654,7 +655,8 @@ func update_state_shield(delta):
 	var shield_pressed = ctrl_queue.get_last_ctrl(0)["shield"]
 	
 	if shield_elapsed_time > MAX_SHIELD_LENGTH:
-		set_state(IDLE)
+		stun_time = SHIELD_STUN
+		set_state(STUNNED)
 		get_node("shield").hide()
 		return
 		
@@ -665,6 +667,43 @@ func update_state_shield(delta):
 	
 	var scle = ((MAX_SHIELD_LENGTH - shield_elapsed_time )/MAX_SHIELD_LENGTH) * MAX_SHIELD_SCALE
 	get_node("shield").set_scale(Vector2(scle, scle))
+	
+# set this variable when state is canged to stunned 
+var stun_time = -1
+
+var max_stun_time = 0
+var current_stun_time = 0
+func update_state_stunned(delta):
+	
+	var exit_stun = false
+	if stun_time != -1:
+		max_stun_time = stun_time
+		stun_time= -1
+		current_stun_time += delta
+	else:
+		current_stun_time += delta
+		if current_stun_time > max_stun_time:
+			exit_stun = true
+	
+	# first check for attacks
+	var under_attack
+	if under_attack():
+		stun_time = -1
+		exit_stun = true
+		under_attack = true
+	else:
+		under_attack = false
+			
+	var on_floor = apply_force(delta)
+	
+	if exit_stun:
+		stun_time = -1
+		if under_attack:
+			set_state(TAKE)
+		elif not on_floor:
+			set_state(AIRBOURNE)
+		else:
+			set_state(IDLE)
 	
 func update_anim_if_not(track):
 	var anim = get_node("anim")

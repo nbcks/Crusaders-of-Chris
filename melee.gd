@@ -98,7 +98,6 @@ func are_we_ready():
 
 func _ready():
 	players = get_node("/root/player_variables").players
-	get_node("/root/scene_switcher").melee_map_select_music_pos = 0
 	set_process(true)
 	
 func _process(delta):

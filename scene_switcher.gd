@@ -15,8 +15,7 @@ func goto_scene(path):
 	
 	# The way around this is deferring the load to a later time, when
 	# it is ensured that no code from the current scene is running:
-	
-	if cur_scene.get_name() == "melee":
+	if (cur_scene.get_name() == "melee") or (cur_scene.get_name() == "title_screen"):
 		melee_map_select_music_pos = cur_scene.get_node("music").get_pos()
 	
 	call_deferred("_deferred_goto_scene",path)
@@ -41,7 +40,7 @@ func _deferred_goto_scene(path):
 	# optional, to make it compatible with the SceneTree.change_scene() API
 	get_tree().set_current_scene( cur_scene )
 	
-	if cur_scene.get_name() == "map_select":
+	if (cur_scene.get_name() == "map_select") or (cur_scene.get_name() == "melee"):
 		cur_scene.get_node("music").play(melee_map_select_music_pos)
 		
 
