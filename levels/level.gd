@@ -15,7 +15,7 @@ func _ready():
 	player_vars = get_node("/root/player_variables")
 	
 	# DEBUG REMOVE IN PRODUCT
-	#player_vars.set_possum_2()
+	player_vars.set_possum_2()
 	
 	players = player_vars.players
 	no_players = 0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=1]
+[gd_scene load_steps=27 format=1]
 
 [ext_resource path="res://levels/level.gd" type="Script" id=1]
 [ext_resource path="res://art/FinalChrisrination/PNGFiles/StagePostionGuide4P.png" type="Texture" id=2]
 [ext_resource path="res://ui/melee_ui.tscn" type="PackedScene" id=3]
 [ext_resource path="res://music/ambientmain_0.ogg" type="AudioStream" id=4]
+[ext_resource path="res://art/FinalChrisrination/PNGFiles/platform2P1.png" type="Texture" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -105,6 +106,11 @@ extents = Vector2( 5546.34, 438.606 )
 custom_solver_bias = 0.0
 extents = Vector2( 400, 4000 )
 
+[sub_resource type="RectangleShape2D" id=21]
+
+custom_solver_bias = 0.0
+extents = Vector2( 181.174, 36.6774 )
+
 [node name="final_chris" type="Node2D"]
 
 script/script = ExtResource( 1 )
@@ -128,6 +134,7 @@ stretch_mode = 0
 
 [node name="ground" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 936, 865 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -202,6 +209,7 @@ trigger = false
 
 [node name="spawns" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 939.149, 542.917 )
 
 [node name="1" type="Position2D" parent="spawns"]
@@ -220,6 +228,10 @@ transform/pos = Vector2( 442.086, 101.329 )
 
 transform/pos = Vector2( 838.516, 101.329 )
 
+[node name="5" type="Position2D" parent="spawns"]
+
+transform/pos = Vector2( 20.0333, 105.851 )
+
 [node name="music" type="StreamPlayer" parent="."]
 
 stream/stream = ExtResource( 4 )
@@ -233,6 +245,7 @@ stream/buffering_ms = 500
 
 [node name="blast_area" type="Area2D" parent="."]
 
+editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 19 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 630.741, -1565.62 )
@@ -287,5 +300,59 @@ transform/pos = Vector2( -972.231, -693.374 )
 [node name="pos_max" type="Position2D" parent="."]
 
 transform/pos = Vector2( 2860.37, 1457.6 )
+
+[node name="plat1" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 500, 430 )
+input/pickable = false
+shapes/0/shape = SubResource( 21 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -0.440125 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+one_way_collision/direction = Vector2( 0, 1 )
+one_way_collision/max_depth = 6.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="plat1"]
+
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plat1"]
+
+transform/pos = Vector2( 0, -0.440125 )
+shape = SubResource( 21 )
+trigger = false
+_update_shape_index = 0
+
+[node name="plat2" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 1370, 430 )
+input/pickable = false
+shapes/0/shape = SubResource( 21 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -0.440125 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+one_way_collision/direction = Vector2( 0, 1 )
+one_way_collision/max_depth = 6.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="plat2"]
+
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plat2"]
+
+transform/pos = Vector2( 0, -0.440125 )
+shape = SubResource( 21 )
+trigger = false
+_update_shape_index = 0
 
 

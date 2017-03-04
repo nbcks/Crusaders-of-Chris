@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_NUM_PLAYERS = 4
+const MAX_NUM_PLAYERS = 5
 
 # PLAYER ENUM
 const POSSUM = 0
