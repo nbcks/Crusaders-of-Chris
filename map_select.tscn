@@ -136,4 +136,19 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
+[node name="instruct" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 8.0
+margin/top = 8.0
+margin/right = 273.0
+margin/bottom = 91.0
+text = "choose map with a then press start to play the best Sunderland Developments has to offer!\n"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 

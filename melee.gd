@@ -14,6 +14,7 @@ func activate_players():
 		if not players[i]["active"] and Input.is_joy_button_pressed(i, JOY_XBOX_A):
 			players[i]["active"] = true
 			print("player %d active!" % (i + 1))
+			get_node("players").get_child(i).hide()
 
 func move_mice():
 	for i in range(get_node("/root/player_variables").MAX_NUM_PLAYERS):

@@ -41,6 +41,8 @@ TODO art list
     - arches
     - skyscraper background
     
+- 5 player support
+    
 bugs:
     - at 100%, force done seems to spike massively
 

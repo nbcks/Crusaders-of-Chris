@@ -1,20 +1,15 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://melee.gd" type="Script" id=1]
 [ext_resource path="res://music/The Last Encounter Long Loop.ogg" type="AudioStream" id=2]
 [ext_resource path="res://art/backgrounds/melee_logo.png" type="Texture" id=3]
 [ext_resource path="res://art/characters/possum/avatar.png" type="Texture" id=4]
-[ext_resource path="res://art/misc/melee_box.png" type="Texture" id=5]
-[ext_resource path="res://art/misc/cursor.png" type="Texture" id=6]
-[ext_resource path="res://art/numbers/p.png" type="Texture" id=7]
-[ext_resource path="res://art/numbers/1.png" type="Texture" id=8]
-[ext_resource path="res://art/numbers/2.png" type="Texture" id=9]
-[ext_resource path="res://art/numbers/3.png" type="Texture" id=10]
-[ext_resource path="res://art/numbers/4.png" type="Texture" id=11]
-[ext_resource path="res://art/numbers/5.png" type="Texture" id=12]
-[ext_resource path="res://art/numbers/6.png" type="Texture" id=13]
-[ext_resource path="res://art/numbers/7.png" type="Texture" id=14]
-[ext_resource path="res://art/numbers/8.png" type="Texture" id=15]
+[ext_resource path="res://art/misc/cursor.png" type="Texture" id=5]
+[ext_resource path="res://art/numbers/p.png" type="Texture" id=6]
+[ext_resource path="res://art/numbers/1.png" type="Texture" id=7]
+[ext_resource path="res://art/numbers/2.png" type="Texture" id=8]
+[ext_resource path="res://art/numbers/3.png" type="Texture" id=9]
+[ext_resource path="res://art/numbers/4.png" type="Texture" id=10]
 
 [node name="melee" type="Control"]
 
@@ -98,39 +93,118 @@ transform/pos = Vector2( -231.112, 69.4535 )
 
 [node name="players" type="Control" parent="."]
 
-visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 953.0
-margin/top = 920.0
-margin/right = 993.0
-margin/bottom = 960.0
+margin/left = 128.0
+margin/top = 912.0
+margin/right = 168.0
+margin/bottom = 952.0
 
-[node name="Control" type="Control" parent="players"]
+[node name="1" type="Control" parent="players"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = -897.0
-margin/top = 40.0
-margin/right = -857.0
-margin/bottom = 80.0
+margin/left = -72.0
+margin/top = 58.0
+margin/right = -32.0
+margin/bottom = 98.0
 
-[node name="TextureFrame" type="TextureFrame" parent="players/Control"]
+[node name="lab" type="Label" parent="players/1"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 179.0
+margin/bottom = 31.0
+text = "press A/X to activate player!\n"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="2" type="Control" parent="players"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = -46.0
-margin/top = -276.0
-margin/right = 54.0
-margin/bottom = 24.0
-texture = ExtResource( 5 )
-stretch_mode = 0
+margin/left = 300.0
+margin/top = 58.0
+margin/right = 340.0
+margin/bottom = 98.0
+
+[node name="lab" type="Label" parent="players/2"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 179.0
+margin/bottom = 31.0
+text = "press A/X to activate player!\n"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="3" type="Control" parent="players"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 700.0
+margin/top = 58.0
+margin/right = 740.0
+margin/bottom = 98.0
+
+[node name="lab" type="Label" parent="players/3"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 179.0
+margin/bottom = 31.0
+text = "press A/X to activate player!\n"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="4" type="Control" parent="players"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 1300.0
+margin/top = 58.0
+margin/right = 1340.0
+margin/bottom = 98.0
+
+[node name="lab" type="Label" parent="players/4"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 179.0
+margin/bottom = 31.0
+text = "press A/X to activate player!\n"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="mice" type="Node2D" parent="."]
 
@@ -143,21 +217,21 @@ transform/pos = Vector2( -782.811, 236.879 )
 [node name="cursor" type="Sprite" parent="mice/p1"]
 
 transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="p" type="Sprite" parent="mice/p1"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -21.4101, 9.76677 )
 transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="1" type="Sprite" parent="mice/p1"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="click" type="Position2D" parent="mice/p1"]
 
@@ -165,26 +239,26 @@ transform/pos = Vector2( 10.7022, -34.7228 )
 
 [node name="p2" type="Node2D" parent="mice"]
 
-transform/pos = Vector2( -600.811, 236.879 )
+transform/pos = Vector2( -420, 236.879 )
 
 [node name="cursor" type="Sprite" parent="mice/p2"]
 
 transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="p" type="Sprite" parent="mice/p2"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -21.4101, 9.76677 )
 transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="2" type="Sprite" parent="mice/p2"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="click" type="Position2D" parent="mice/p2"]
 
@@ -192,26 +266,26 @@ transform/pos = Vector2( 10.7022, -34.7228 )
 
 [node name="p3" type="Node2D" parent="mice"]
 
-transform/pos = Vector2( -430.811, 236.879 )
+transform/pos = Vector2( 50, 236.879 )
 
 [node name="cursor" type="Sprite" parent="mice/p3"]
 
 transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="p" type="Sprite" parent="mice/p3"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -21.4101, 9.76677 )
 transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="3" type="Sprite" parent="mice/p3"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 
 [node name="click" type="Position2D" parent="mice/p3"]
 
@@ -219,149 +293,57 @@ transform/pos = Vector2( 10.94, -34.4849 )
 
 [node name="p4" type="Node2D" parent="mice"]
 
-transform/pos = Vector2( -230.811, 236.879 )
+transform/pos = Vector2( 630, 236.879 )
 
 [node name="cursor" type="Sprite" parent="mice/p4"]
 
 transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 
 [node name="p" type="Sprite" parent="mice/p4"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -21.4101, 9.76677 )
 transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 
 [node name="4" type="Sprite" parent="mice/p4"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 
 [node name="click" type="Position2D" parent="mice/p4"]
 
 transform/pos = Vector2( 9.98865, -33.0579 )
 
-[node name="p5" type="Node2D" parent="mice"]
-
-transform/pos = Vector2( -60, 236.879 )
-
-[node name="cursor" type="Sprite" parent="mice/p5"]
-
-transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
-
-[node name="p" type="Sprite" parent="mice/p5"]
-
-visibility/blend_mode = 3
-transform/pos = Vector2( -21.4101, 9.76677 )
-transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 7 )
-
-[node name="5" type="Sprite" parent="mice/p5"]
-
-visibility/blend_mode = 3
-transform/pos = Vector2( -8.61955, 10.0075 )
-transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 12 )
-
-[node name="click" type="Position2D" parent="mice/p5"]
-
-transform/pos = Vector2( 9.27527, -33.7714 )
-
-[node name="p6" type="Node2D" parent="mice"]
-
-transform/pos = Vector2( 100, 236.879 )
-
-[node name="cursor" type="Sprite" parent="mice/p6"]
-
-transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
-
-[node name="p" type="Sprite" parent="mice/p6"]
-
-visibility/blend_mode = 3
-transform/pos = Vector2( -21.4101, 9.76677 )
-transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 7 )
-
-[node name="6" type="Sprite" parent="mice/p6"]
-
-visibility/blend_mode = 3
-transform/pos = Vector2( -8.61955, 10.0075 )
-transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 13 )
-
-[node name="click" type="Position2D" parent="mice/p6"]
-
-transform/pos = Vector2( 9.51306, -34.4849 )
-
-[node name="p7" type="Node2D" parent="mice"]
-
-transform/pos = Vector2( 300, 236.879 )
-
-[node name="cursor" type="Sprite" parent="mice/p7"]
-
-transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
-
-[node name="p" type="Sprite" parent="mice/p7"]
-
-visibility/blend_mode = 3
-transform/pos = Vector2( -21.4101, 9.76677 )
-transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 7 )
-
-[node name="7" type="Sprite" parent="mice/p7"]
-
-visibility/blend_mode = 3
-transform/pos = Vector2( -8.61955, 10.0075 )
-transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 14 )
-
-[node name="click" type="Position2D" parent="mice/p7"]
-
-transform/pos = Vector2( 10.2266, -33.7714 )
-
-[node name="p8" type="Node2D" parent="mice"]
-
-transform/pos = Vector2( 400, 236.879 )
-
-[node name="cursor" type="Sprite" parent="mice/p8"]
-
-transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
-
-[node name="p" type="Sprite" parent="mice/p8"]
-
-visibility/blend_mode = 3
-transform/pos = Vector2( -21.4101, 9.76677 )
-transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 7 )
-
-[node name="8" type="Sprite" parent="mice/p8"]
-
-visibility/blend_mode = 3
-transform/pos = Vector2( -8.61955, 10.0075 )
-transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 15 )
-
-[node name="click" type="Position2D" parent="mice/p8"]
-
-transform/pos = Vector2( 9.75098, -34.2471 )
-
 [node name="ready" type="Label" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 1490.0
+margin/top = 57.0
+margin/right = 1618.0
+margin/bottom = 129.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="instruct" type="Label" parent="."]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 877.0
-margin/top = 59.0
-margin/right = 1005.0
-margin/bottom = 131.0
+margin/left = 820.0
+margin/top = 43.0
+margin/right = 1354.0
+margin/bottom = 115.0
+text = "press A/X to activate character, then move the cursor to over the desired character.\nPress A/X again to select this character. Press start when all active players have \nchosen a character to go to map select!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
