@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=1]
+[gd_scene load_steps=25 format=1]
 
 [ext_resource path="res://levels/level.gd" type="Script" id=1]
 [ext_resource path="res://art/FinalChrisrination/PNGFiles/StagePostionGuide4P.png" type="Texture" id=2]
@@ -94,6 +94,16 @@ points = Vector2Array( -794.729, 24.7231, -441.729, 186.723, -525.729, 173.723 )
 
 custom_solver_bias = 0.0
 points = Vector2Array( -794.729, 24.7231, -629.729, 145.723, -681.729, 121.723, -762.729, 67.723 )
+
+[sub_resource type="RectangleShape2D" id=19]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5546.34, 438.606 )
+
+[sub_resource type="RectangleShape2D" id=20]
+
+custom_solver_bias = 0.0
+extents = Vector2( 400, 4000 )
 
 [node name="final_chris" type="Node2D"]
 
@@ -224,9 +234,58 @@ stream/buffering_ms = 500
 [node name="blast_area" type="Area2D" parent="."]
 
 input/pickable = true
+shapes/0/shape = SubResource( 19 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 630.741, -1565.62 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 19 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 657.697, 2276.55 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 20 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 4169.66, -194.944 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 20 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, -2172.51, 285.917 )
+shapes/3/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+
+[node name="col_rect1" type="CollisionShape2D" parent="blast_area"]
+
+transform/pos = Vector2( 630.741, -1565.62 )
+shape = SubResource( 19 )
+trigger = false
+_update_shape_index = 0
+
+[node name="col_rect2" type="CollisionShape2D" parent="blast_area"]
+
+transform/pos = Vector2( 657.697, 2276.55 )
+transform/scale = Vector2( 1, 1 )
+shape = SubResource( 19 )
+trigger = false
+_update_shape_index = 1
+
+[node name="col_rect3" type="CollisionShape2D" parent="blast_area"]
+
+transform/pos = Vector2( 4169.66, -194.944 )
+shape = SubResource( 20 )
+trigger = false
+_update_shape_index = 2
+
+[node name="col_rect4" type="CollisionShape2D" parent="blast_area"]
+
+transform/pos = Vector2( -2172.51, 285.917 )
+shape = SubResource( 20 )
+trigger = false
+_update_shape_index = 3
+
+[node name="pos_min" type="Position2D" parent="."]
+
+transform/pos = Vector2( -972.231, -693.374 )
+
+[node name="pos_max" type="Position2D" parent="."]
+
+transform/pos = Vector2( 2860.37, 1457.6 )
 
 

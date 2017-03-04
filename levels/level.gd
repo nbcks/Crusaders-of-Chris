@@ -56,7 +56,7 @@ func _ready():
 		i += 1
 			
 	get_node("blast_area").connect("body_enter", self, "chuck_to_centre")
-	get_node("melee_ui").activate_camera()
+	get_node("melee_ui").activate_camera(get_node("pos_min").get_global_pos(), get_node("pos_max").get_global_pos())
 	
 func chuck_to_centre(body):
 	body.set_pos(Vector2(500, 0))

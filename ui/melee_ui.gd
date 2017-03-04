@@ -15,8 +15,8 @@ func register_player(player_no, player_node):
 	
 	#get_node("cam").add_player(player_node)
 	
-func activate_camera():
-	get_node("cam").activate()
+func activate_camera(min_point, max_point):
+	get_node("cam").activate(min_point, max_point)
 	
 func set_victory_no(no):
 	get_node("scores/victory/n").set_texture(num_to_pic(no))

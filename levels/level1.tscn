@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=1]
 
-[ext_resource path="res://levels/level.gd" type="Script" id=1]
+[ext_resource path="res://levels/level1.gd" type="Script" id=1]
 [ext_resource path="res://ui/melee_ui.tscn" type="PackedScene" id=2]
 [ext_resource path="res://art/backgrounds/back1.png" type="Texture" id=3]
 [ext_resource path="res://art/black_box.png" type="Texture" id=4]
@@ -284,5 +284,13 @@ transform/pos = Vector2( 661.96, 312.241 )
 [node name="8" type="Position2D" parent="spawns"]
 
 transform/pos = Vector2( 717.077, 308.459 )
+
+[node name="pos_min" type="Position2D" parent="."]
+
+transform/pos = Vector2( -319.765, -178.627 )
+
+[node name="pos_max" type="Position2D" parent="."]
+
+transform/pos = Vector2( 1599.01, 899.831 )
 
 

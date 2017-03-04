@@ -163,8 +163,7 @@ func update_ctrls():
 	var shoot = Input.is_joy_button_pressed(controller_no, JOY_XBOX_X)
 	var shield = Input.is_joy_button_pressed(controller_no, JOY_R2)
 	var melee = Input.is_joy_button_pressed(controller_no, JOY_XBOX_A)
-	#var special = Input.is_joy_button_pressed(controller_no, JOY_XBOX_X)
-	var special = false
+	var special = Input.is_joy_button_pressed(controller_no, JOY_XBOX_X)
 	
 	# set controls
 	# set old key presses
@@ -189,7 +188,6 @@ func under_attack():
 				cur_attack_area = area
 				return true
 			
-	
 	return false
 	
 
@@ -242,12 +240,11 @@ func special_attack():
 		laser_force.x = -1000
 	else:
 		laser_force.x = 1000
-	laser.activate(Vector2(laser_force.x,0))
+	laser.activate(Vector2(laser_force.x, 0))
 	attack_type = SHOOT
 	
 func melee_attack():
 	time_since_last_melee = 0
-	#get_node("anim").set_speed( 0.1)
 	if facing_left:
 		update_anim_if_not("left_punch")
 	else:
@@ -352,7 +349,6 @@ func update_state_idle(delta):
 	# first check for attacks
 	var under_attack
 	if under_attack():
-		set_state(TAKE)
 		done_action = true
 		under_attack = true
 	else:
@@ -365,8 +361,8 @@ func update_state_idle(delta):
 		shield_elapsed_time = max (0, shield_elapsed_time - delta * SHIELD_REGEN)
 		
 	var special = ctrl_queue.get_last_ctrl(0)["special"]
-		
-	if special and time_since_last_shoot > 0.7 and not done_action:
+	
+	if special and not done_action:
 		special_attack()
 		set_state(ATTACKING)
 		done_action = true
