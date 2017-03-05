@@ -27,12 +27,12 @@ mechanics:
 up and down attacks
 nerfing jumping
 friction
+
 Player identifier
 
 
 TODO art list
 
-- title screen logo
 - characters
 - cumpetia
 - bridge joints
@@ -40,10 +40,9 @@ TODO art list
         - Chrises head
     - arches
     - skyscraper background
-    
-- 5 player support
-    
+        
 bugs:
-    - at 100%, force done seems to spike massively
+    - player forces are serious imba
+    - shieldable being false doesn't affect attacks going through shields
 
 

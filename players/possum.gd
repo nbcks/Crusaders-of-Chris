@@ -618,7 +618,7 @@ func update_state_take(delta):
 		else:
 			print("attack has no DI")
 		print("direction of attack ", direction)
-		force += direction * (attack.var_force_magnitude * (health_pc / 100) + attack.raw_force_magnitude) 
+		force += direction * (attack.var_force_magnitude * (health_pc / 100.0) + attack.raw_force_magnitude) 
 		print("force applied by attack", force)
 		
 		# apply damage

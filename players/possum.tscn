@@ -526,8 +526,6 @@ autoplay = ""
 
 [node name="hurtboxes" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="punch" type="Area2D" parent="hurtboxes"]
 
 transform/pos = Vector2( -0.858551, 0.858555 )

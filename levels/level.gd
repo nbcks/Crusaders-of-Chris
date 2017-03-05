@@ -69,6 +69,9 @@ func chuck_to_centre(body):
 			if body.lives > 1:
 				body.set_lives(body.lives - 1)
 			else:
+				if body.lives == 1:
+					body.set_lives(0)
+				
 				# eliminated player
 				print("player: ", body.player_no, " eliminated!")
 				

@@ -1,7 +1,7 @@
 extends Camera2D
 
-const ZOOM_FACTOR = 0.05
-const MARGIN = 200.0
+const ZOOM_FACTOR = 0.1
+const MARGIN = 500.0
 const MIN_ZOOM = 1
 
 var players

@@ -20,12 +20,15 @@ var cur_map_selected = -1
 
 const TESTING = 0
 const FINAL_CHRIS = 1
+const PLES_MEWS = 2
 
 func map_to_path(no):
 	if no == TESTING:
 		return "res://levels/level1.tscn"
 	elif no == FINAL_CHRIS:
 		return "res://levels/final_chris.tscn"
+	elif no == PLES_MEWS:
+		return "res://levels/pleasant_mews.tscn"
 	else:
 		breakpoint
 

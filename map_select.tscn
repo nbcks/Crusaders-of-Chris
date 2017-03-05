@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://map_select.gd" type="Script" id=1]
 [ext_resource path="res://art/backgrounds/test_avatar.png" type="Texture" id=2]
 [ext_resource path="res://art/FinalChrisrination/PNGFiles/thumbnail.png" type="Texture" id=3]
-[ext_resource path="res://art/misc/cursor.png" type="Texture" id=4]
-[ext_resource path="res://music/The Last Encounter Long Loop.ogg" type="AudioStream" id=5]
+[ext_resource path="res://art/ples_mews_thumbnail.PNG" type="Texture" id=4]
+[ext_resource path="res://art/misc/cursor.png" type="Texture" id=5]
+[ext_resource path="res://music/The Last Encounter Long Loop.ogg" type="AudioStream" id=6]
 
 [node name="map_select" type="Control"]
 
@@ -96,6 +97,39 @@ transform/pos = Vector2( -56.3907, -1.99026 )
 
 transform/pos = Vector2( 45.7759, 104.157 )
 
+[node name="pleasant_mews" type="Control" parent="maps"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -480.0
+margin/top = -344.0
+margin/right = -440.0
+margin/bottom = -304.0
+
+[node name="avatar" type="TextureFrame" parent="maps/pleasant_mews"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -56.0
+margin/top = -3.0
+margin/right = 45.0
+margin/bottom = 104.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 0
+
+[node name="min_point" type="Position2D" parent="maps/pleasant_mews"]
+
+transform/pos = Vector2( -56.3907, -1.99026 )
+
+[node name="max_point" type="Position2D" parent="maps/pleasant_mews"]
+
+transform/pos = Vector2( 45.7759, 104.157 )
+
 [node name="cursor" type="Node2D" parent="."]
 
 transform/pos = Vector2( 889.243, 545.206 )
@@ -103,7 +137,7 @@ transform/pos = Vector2( 889.243, 545.206 )
 [node name="cursor" type="Sprite" parent="cursor"]
 
 transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="click" type="Position2D" parent="cursor"]
 
@@ -127,7 +161,7 @@ max_lines_visible = -1
 
 [node name="music" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 5 )
+stream/stream = ExtResource( 6 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
