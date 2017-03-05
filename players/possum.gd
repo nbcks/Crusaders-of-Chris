@@ -15,6 +15,7 @@ const FLOOR_ANGLE_TOLERANCE = 40
 
 # walking
 const STOP_FORCE = 1500
+const FRICTION = 500
 const STOPPING_BOUND = 100
 const WALK_FORCE = 1000
 const WALK_MIN_SPEED = 10
@@ -141,6 +142,9 @@ var time_attacking = 0
 var max_time_attacking = 0
 
 var attack_type = 0
+
+var global_on_floor = false
+var apply_friction = false
 
 signal state_change(state, playno)
 var cur_state = IDLE
@@ -309,6 +313,14 @@ func move_sideways(move_force, max_move_speed):
 	
 # returns true if on floor
 func apply_force(delta):
+	if global_on_floor and apply_friction:
+		if (velocity.x >= -STOPPING_BOUND and velocity.x <= STOPPING_BOUND):
+			velocity.x = 0
+		else:	
+			var vsign = sign(velocity.x)
+			force.x = -vsign * FRICTION # force needs to go opposite
+			update_anim_if_not("stopping")
+		
 	velocity += force * delta
 	var motion = velocity * delta
 	motion = move(motion)
@@ -335,6 +347,8 @@ func apply_force(delta):
 		on_floor = false
 		
 	move(motion)
+	
+	global_on_floor = on_floor
 	
 	return on_floor
 				
@@ -596,6 +610,7 @@ var time_taken = 0
 var max_time_taken = 0
 func update_state_take(delta):
 	if max_time_taken <= 0:
+		apply_friction = true
 		print("applying attack in take")
 		# get the current attack and apply the force
 		var attack = cur_attack_area.get_attack()
@@ -637,6 +652,7 @@ func update_state_take(delta):
 			# reset time taken
 			max_time_taken = 0
 			time_taken = 0
+			apply_friction = false
 			set_state(IDLE)
 			
 		force.x = 0
