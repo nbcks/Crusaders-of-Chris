@@ -15,20 +15,23 @@ const FLOOR_ANGLE_TOLERANCE = 40
 
 # walking
 const STOP_FORCE = 1500
-const FRICTION = 500
+const FRICTION = 75
+const LOW_FRICTION = 25
 const STOPPING_BOUND = 100
 const WALK_FORCE = 1000
 const WALK_MIN_SPEED = 10
 const WALK_MAX_SPEED = 400
+
+var friction = 0
 
 # jumping 
 const LOW_JUMP_FRAMES = 5
 const MED_JUMP_FRAMES = 10
 const HIGH_JUMP_FRAMES = 25
 
-const LOW_JUMP_FORCE = 15000
-const MED_JUMP_FORCE = 20000
-const HIGH_JUMP_FORCE = 25000
+const LOW_JUMP_FORCE = 18 * 1000
+const MED_JUMP_FORCE = 22 * 1000
+const HIGH_JUMP_FORCE = 24 * 1000
 
 const AIRBOURNE_SIDE_FORCE = 500
 const AIRBOURNE_MAX_SPEED = 150
@@ -231,6 +234,7 @@ func _fixed_process(delta):
 func special_attack():
 	time_since_last_shoot = 0
 	var laser = preload("res://players/laser.tscn").instance()
+	laser.add_collision_exception_with(self)
 	var shoot_pos
 	if facing_left:
 		shoot_pos = get_node("shoot_pos").get_pos()
@@ -269,10 +273,16 @@ func jump():
 	# deal with jumping
 	var jumps = ctrl_queue.how_long_pressed_from("jump", 1)
 	var jump_release = not ctrl_queue.get_last_ctrl(0)["jump"] and ctrl_queue.get_last_ctrl(1)["jump"]
+
 	
 	if (jump_release and jump_count < MAX_JUMPS):
 		jumping = true
 		jump_count += 1
+		
+		# so that if you're in the air, it's like jumping
+		# off a platform
+		velocity.y = 0
+	
 		if jumps <= LOW_JUMP_FRAMES:
 			print("jump low frames")
 			force.y -= LOW_JUMP_FORCE
@@ -313,12 +323,12 @@ func move_sideways(move_force, max_move_speed):
 	
 # returns true if on floor
 func apply_force(delta):
-	if global_on_floor and apply_friction:
+	if global_on_floor and friction > 0:
 		if (velocity.x >= -STOPPING_BOUND and velocity.x <= STOPPING_BOUND):
 			velocity.x = 0
 		else:	
 			var vsign = sign(velocity.x)
-			force.x = -vsign * FRICTION # force needs to go opposite
+			force.x = -vsign * friction # force needs to go opposite
 			update_anim_if_not("stopping")
 		
 	velocity += force * delta
@@ -419,6 +429,7 @@ func update_state_idle(delta):
 	elif not done_action:
 		update_anim_if_not("idle")
 	
+	friction = FRICTION
 	var on_floor = apply_force(delta)
 	if under_attack:
 		set_state(TAKE)
@@ -459,6 +470,7 @@ func update_state_airbourne(delta):
 		moving = -1
 	facing_left = old_side # messy solution to keep facing the same way in the air
 	
+	friction = 0
 	var on_floor = apply_force(delta)
 	
 	if under_attack:
@@ -583,6 +595,7 @@ func update_state_walking(delta):
 		update_anim_if_not("stopping")
 		set_state(STOPPING)
 	
+	friction = 0
 	var on_floor = apply_force(delta)
 	
 	if not on_floor and not done_action:
@@ -601,6 +614,8 @@ func update_state_stopping(delta):
 		force.x = -vsign * STOP_FORCE # force needs to go opposite
 		update_anim_if_not("stopping")
 	
+	# friction already implemented here
+	friction = 0
 	var on_floor = apply_force(delta)
 	
 	if not on_floor:
@@ -640,6 +655,7 @@ func update_state_take(delta):
 		print("player ", player_no, " taking ", attack.damage, " damage")
 		set_health(health_pc + attack.damage)
 		
+		friction = FRICTION
 		var on_floor = apply_force(delta)
 		
 		if attack.is_destroyable:
@@ -663,8 +679,21 @@ func update_state_take(delta):
 	
 func update_state_shield(delta):
 	get_node("shield").show()
+	
+	var under_attack
+	if under_attack():
+		var attack = cur_attack_area.get_attack()
+		under_attack = not attack.is_shieldable
+	else:
+		under_attack = false
+		
 	shield_elapsed_time += delta
 	var shield_pressed = ctrl_queue.get_last_ctrl(0)["shield"]
+	
+	if under_attack:
+		get_node("shield").hide()
+		set_state(TAKE)
+		return
 	
 	if shield_elapsed_time > MAX_SHIELD_LENGTH:
 		stun_time = SHIELD_STUN

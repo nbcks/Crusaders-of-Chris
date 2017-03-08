@@ -274,7 +274,6 @@ _update_shape_index = 0
 [node name="col_rect2" type="CollisionShape2D" parent="blast_area"]
 
 transform/pos = Vector2( 657.697, 2276.55 )
-transform/scale = Vector2( 1, 1 )
 shape = SubResource( 19 )
 trigger = false
 _update_shape_index = 1
@@ -303,7 +302,7 @@ transform/pos = Vector2( 2860.37, 1457.6 )
 
 [node name="plat1" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( 500, 430 )
+transform/pos = Vector2( 500, 530 )
 input/pickable = false
 shapes/0/shape = SubResource( 21 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -0.440125 )
@@ -330,7 +329,7 @@ _update_shape_index = 0
 
 [node name="plat2" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( 1370, 430 )
+transform/pos = Vector2( 1370, 530 )
 input/pickable = false
 shapes/0/shape = SubResource( 21 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -0.440125 )

@@ -2,7 +2,7 @@ extends Area2D
 
 class PossumPunch extends Reference:
 	var name = "Possum Punch"
-	var damage = 10 
+	var damage = 13
 	var is_shieldable = true
 	var is_destroyable = false
 	
@@ -23,8 +23,8 @@ class PossumPunch extends Reference:
 		return result
 	
 	var stun = 0.5
-	var raw_force_magnitude = 10000
-	var var_force_magnitude = 100000
+	var raw_force_magnitude = 8 * 1000
+	var var_force_magnitude = 30 * 1000
 	var point
 	
 	func _init(point, controller_no):
@@ -54,8 +54,8 @@ class PossumKick extends Reference:
 		return result
 	
 	var stun = 1.0
-	var raw_force_magnitude = 20000
-	var var_force_magnitude = 250000
+	var raw_force_magnitude = 12 * 1000
+	var var_force_magnitude = 40 * 1000
 	var point
 	
 	func _init(point, controller_no):

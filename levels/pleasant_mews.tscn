@@ -12,17 +12,17 @@
 [ext_resource path="res://music/01_I-AllegroMaNonTroppo.ogg" type="AudioStream" id=10]
 [ext_resource path="res://tilesets/tileset.tres" type="TileSet" id=11]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 262.628
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 287.565
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
 radius = 200.345
@@ -32,12 +32,12 @@ radius = 200.345
 custom_solver_bias = 0.0
 extents = Vector2( 21.3857, 182.976 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 5546.34, 438.606 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 400, 4000 )
@@ -95,7 +95,7 @@ softness = 0.0
 
 transform/pos = Vector2( 1005, 923 )
 input/pickable = false
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 2
@@ -132,14 +132,14 @@ softness = 0.0
 [node name="col_circle" type="CollisionShape2D" parent="saw/blade"]
 
 visibility/visible = false
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="hitbox" type="Area2D" parent="saw/blade"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -150,14 +150,14 @@ angular_damp = 1.0
 [node name="col_circle" type="CollisionShape2D" parent="saw/blade/hitbox"]
 
 visibility/visible = false
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 
 [node name="hurtbox" type="Area2D" parent="saw/blade"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -169,7 +169,7 @@ script/script = ExtResource( 7 )
 [node name="col_circle" type="CollisionShape2D" parent="saw/blade/hurtbox"]
 
 visibility/visible = false
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
@@ -267,16 +267,16 @@ stream/buffering_ms = 500
 
 editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 630.741, -1565.62 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 1 )
+shapes/1/shape = SubResource( 5 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 657.697, 2276.55 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 2 )
+shapes/2/shape = SubResource( 6 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 4169.66, -194.944 )
 shapes/2/trigger = false
-shapes/3/shape = SubResource( 2 )
+shapes/3/shape = SubResource( 6 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, -2172.51, 285.917 )
 shapes/3/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -287,28 +287,28 @@ angular_damp = 1.0
 [node name="col_rect1" type="CollisionShape2D" parent="blast_area"]
 
 transform/pos = Vector2( 630.741, -1565.62 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
 [node name="col_rect2" type="CollisionShape2D" parent="blast_area"]
 
 transform/pos = Vector2( 657.697, 2276.55 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 1
 
 [node name="col_rect3" type="CollisionShape2D" parent="blast_area"]
 
 transform/pos = Vector2( 4169.66, -194.944 )
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 2
 
 [node name="col_rect4" type="CollisionShape2D" parent="blast_area"]
 
 transform/pos = Vector2( -2172.51, 285.917 )
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 3
 

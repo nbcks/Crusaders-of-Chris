@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://melee.gd" type="Script" id=1]
 [ext_resource path="res://music/The Last Encounter Long Loop.ogg" type="AudioStream" id=2]
 [ext_resource path="res://art/backgrounds/melee_logo.png" type="Texture" id=3]
 [ext_resource path="res://art/characters/possum/avatar.png" type="Texture" id=4]
-[ext_resource path="res://art/misc/cursor.png" type="Texture" id=5]
-[ext_resource path="res://art/numbers/p.png" type="Texture" id=6]
-[ext_resource path="res://art/numbers/1.png" type="Texture" id=7]
-[ext_resource path="res://art/numbers/2.png" type="Texture" id=8]
-[ext_resource path="res://art/numbers/3.png" type="Texture" id=9]
-[ext_resource path="res://art/numbers/4.png" type="Texture" id=10]
-[ext_resource path="res://art/numbers/5.png" type="Texture" id=11]
+[ext_resource path="res://art/chris_face.png" type="Texture" id=5]
+[ext_resource path="res://art/misc/cursor.png" type="Texture" id=6]
+[ext_resource path="res://art/numbers/p.png" type="Texture" id=7]
+[ext_resource path="res://art/numbers/1.png" type="Texture" id=8]
+[ext_resource path="res://art/numbers/2.png" type="Texture" id=9]
+[ext_resource path="res://art/numbers/3.png" type="Texture" id=10]
+[ext_resource path="res://art/numbers/4.png" type="Texture" id=11]
+[ext_resource path="res://art/numbers/5.png" type="Texture" id=12]
 
 [node name="melee" type="Control"]
 
@@ -89,6 +90,39 @@ stretch_mode = 0
 transform/pos = Vector2( -326.91, -35.9242 )
 
 [node name="max_point" type="Position2D" parent="characters/possum"]
+
+transform/pos = Vector2( -231.112, 69.4535 )
+
+[node name="chris" type="Control" parent="characters"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 135.0
+margin/top = 0.0
+margin/right = 175.0
+margin/bottom = 40.0
+
+[node name="avatar" type="TextureFrame" parent="characters/chris"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -328.0
+margin/top = -37.0
+margin/right = -231.0
+margin/bottom = 69.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 0
+
+[node name="min_point" type="Position2D" parent="characters/chris"]
+
+transform/pos = Vector2( -326.91, -35.9242 )
+
+[node name="max_point" type="Position2D" parent="characters/chris"]
 
 transform/pos = Vector2( -231.112, 69.4535 )
 
@@ -235,6 +269,7 @@ max_lines_visible = -1
 
 [node name="mice" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 840.18, 792.064 )
 
 [node name="p1" type="Node2D" parent="mice"]
@@ -244,21 +279,21 @@ transform/pos = Vector2( -782.811, 236.879 )
 [node name="cursor" type="Sprite" parent="mice/p1"]
 
 transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="p" type="Sprite" parent="mice/p1"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -21.4101, 9.76677 )
 transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="1" type="Sprite" parent="mice/p1"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="click" type="Position2D" parent="mice/p1"]
 
@@ -271,21 +306,21 @@ transform/pos = Vector2( -420, 236.879 )
 [node name="cursor" type="Sprite" parent="mice/p2"]
 
 transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="p" type="Sprite" parent="mice/p2"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -21.4101, 9.76677 )
 transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="2" type="Sprite" parent="mice/p2"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="click" type="Position2D" parent="mice/p2"]
 
@@ -298,21 +333,21 @@ transform/pos = Vector2( 50, 236.879 )
 [node name="cursor" type="Sprite" parent="mice/p3"]
 
 transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="p" type="Sprite" parent="mice/p3"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -21.4101, 9.76677 )
 transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="3" type="Sprite" parent="mice/p3"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="click" type="Position2D" parent="mice/p3"]
 
@@ -325,21 +360,21 @@ transform/pos = Vector2( 570, 236.879 )
 [node name="cursor" type="Sprite" parent="mice/p4"]
 
 transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="p" type="Sprite" parent="mice/p4"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -21.4101, 9.76677 )
 transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="4" type="Sprite" parent="mice/p4"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="click" type="Position2D" parent="mice/p4"]
 
@@ -352,21 +387,21 @@ transform/pos = Vector2( 960, 236.879 )
 [node name="cursor" type="Sprite" parent="mice/p5"]
 
 transform/scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="p" type="Sprite" parent="mice/p5"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -21.4101, 9.76677 )
 transform/scale = Vector2( 0.0816849, 0.0769071 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="5" type="Sprite" parent="mice/p5"]
 
 visibility/blend_mode = 3
 transform/pos = Vector2( -8.61955, 10.0075 )
 transform/scale = Vector2( 0.0599483, 0.0832617 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="click" type="Position2D" parent="mice/p5"]
 
@@ -408,10 +443,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 410.0
-margin/top = 318.0
-margin/right = 1105.0
-margin/bottom = 661.0
+margin/left = 750.0
+margin/top = 410.0
+margin/right = 1445.0
+margin/bottom = 753.0
 text = "Press start to go!"
 percent_visible = 1.0
 lines_skipped = 0

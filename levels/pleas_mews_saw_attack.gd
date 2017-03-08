@@ -11,8 +11,8 @@ class SawAttack extends Reference:
 	var is_DI = false
 	
 	var stun = 1.0
-	var raw_force_magnitude = 30000
-	var var_force_magnitude = 400000
+	var raw_force_magnitude = 15 * 1000
+	var var_force_magnitude = 50 * 1000
 	var point
 	
 	func _init(point):

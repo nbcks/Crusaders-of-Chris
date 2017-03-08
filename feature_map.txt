@@ -25,9 +25,6 @@ Anand's Dad
 mechanics:
 
 up and down attacks
-nerfing jumping
-friction
-
 Player identifier
 
 
