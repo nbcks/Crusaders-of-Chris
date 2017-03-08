@@ -173,7 +173,7 @@ func update_ctrls():
 	var shoot = Input.is_joy_button_pressed(controller_no, JOY_XBOX_X)
 	var shield = Input.is_joy_button_pressed(controller_no, JOY_R2)
 	var melee = Input.is_joy_button_pressed(controller_no, JOY_XBOX_A)
-	var special = Input.is_joy_button_pressed(controller_no, JOY_L2)
+	var special = Input.is_joy_button_pressed(controller_no, JOY_R)
 	
 	# set controls
 	# set old key presses
@@ -239,24 +239,21 @@ func special_attack():
 	var laser = preload("res://players/grenade.tscn").instance()
 	laser.add_collision_exception_with(self)
 	
-	var shoot_pos
-	if facing_left:
-		shoot_pos = get_node("shoot_pos").get_pos()
-	else:
-		shoot_pos = get_node("shoot_pos").get_pos() * Vector2(-1, 0)
+	var shoot_pos = get_node("shoot_pos").get_global_pos()
 	
-	var pos = get_pos() + shoot_pos
-	laser.set_pos(pos)
+	laser.set_global_pos(shoot_pos)
 	
 	get_parent().get_parent().add_child(laser)
-	var gren_power = 250
-	var direction = Vector2(0, -1)
-	if facing_left:
-		direction.x = -1
-	else:
-		direction.x = 1
-	direction = direction.normalized()
-	laser.apply_impulse(Vector2(), direction * gren_power)
+	
+	var direction = Vector2(0, 0)
+	direction.x = Input.get_joy_axis(controller_no, 2)
+	direction.y = Input.get_joy_axis(controller_no, 3)
+
+	var time_scle = Input.get_joy_axis(controller_no, 6) # left trigger
+	print("time scale: ", time_scle)
+	laser.set_time(time_scle)
+
+	laser.apply_impulse(Vector2(), direction * GREN_FORCE)
 	laser.activate()
 	attack_type = SHOOT
 	
