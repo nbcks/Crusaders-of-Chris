@@ -59,7 +59,11 @@ func _ready():
 	get_node("melee_ui").activate_camera(get_node("pos_min").get_global_pos(), get_node("pos_max").get_global_pos())
 	
 func chuck_to_centre(body):
-	body.set_pos(Vector2(500, 0))
+	var pos = Vector2(500, 0)
+	if body.has_method("is_player"):
+		if body.is_player():
+			pos = get_node("spawns").get_child(body.player_no - 1).get_global_pos()
+	body.set_pos(pos)
 	if body.has_method("set_health"):
 		body.set_health(0)
 	if body.has_method("set_velocity"):

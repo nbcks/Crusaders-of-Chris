@@ -133,7 +133,7 @@ tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "updat
 [sub_resource type="RectangleShape2D" id=46]
 
 custom_solver_bias = 0.0
-extents = Vector2( 1.49282, 11.6362 )
+extents = Vector2( 1.49282, 16.6626 )
 
 [sub_resource type="SegmentShape2D" id=47]
 
@@ -161,7 +161,7 @@ tracks/2/type = "value"
 tracks/2/path = NodePath("hurtboxes/sword/col_rect:transform/pos")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -6.56481, -19.1829 ), Vector2( 14.1527, -13.4706 ), Vector2( -17.1367, -14.579 ), Vector2( -15.6873, -1.02308 ), Vector2( 0.170496, -11.3392 ) ] }
+tracks/2/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -6.56481, -23.9031 ), Vector2( 14.1527, -13.4706 ), Vector2( -17.1367, -14.579 ), Vector2( -15.6873, -1.02308 ), Vector2( 0.170496, -11.3392 ) ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurtboxes/sword/col_rect:transform/rot")
 tracks/3/interp = 1
@@ -176,7 +176,7 @@ tracks/4/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArr
 [sub_resource type="RectangleShape2D" id=44]
 
 custom_solver_bias = 0.0
-extents = Vector2( 1.76924, 12.0254 )
+extents = Vector2( 1.76924, 18.2115 )
 
 [sub_resource type="SegmentShape2D" id=45]
 
@@ -204,7 +204,7 @@ tracks/2/type = "value"
 tracks/2/path = NodePath("hurtboxes/sword/col_rect:transform/pos")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 7.49417, -19.2074 ), Vector2( -13.2312, -12.4036 ), Vector2( 18.2755, -15.4392 ), Vector2( 17.4382, -0.680205 ), Vector2( 0, 0 ) ] }
+tracks/2/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 7.66899, -26.0255 ), Vector2( -13.2312, -12.4036 ), Vector2( 18.2755, -15.4392 ), Vector2( 17.4382, -0.680205 ), Vector2( 0, 0 ) ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath("hurtboxes/sword/col_rect:transform/rot")
 tracks/3/interp = 1
@@ -311,7 +311,7 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 6
-frame = 13
+frame = 14
 
 [node name="centre" type="Position2D" parent="."]
 
@@ -401,8 +401,8 @@ autoplay = ""
 
 transform/pos = Vector2( -0.858551, 0.858555 )
 input/pickable = true
-shapes/0/shape = SubResource( 46 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -6.56481, -19.1829 )
+shapes/0/shape = SubResource( 45 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -412,15 +412,14 @@ script/script = ExtResource( 4 )
 
 [node name="col_rect" type="CollisionShape2D" parent="hurtboxes/sword"]
 
-transform/pos = Vector2( -6.56481, -19.1829 )
 transform/scale = Vector2( 1, 1 )
-shape = SubResource( 46 )
+shape = SubResource( 45 )
 trigger = false
 _update_shape_index = 0
 
 [node name="pos" type="Position2D" parent="hurtboxes/sword"]
 
-transform/pos = Vector2( -6.32223, -8.83846 )
+transform/pos = Vector2( 18.2318, -1.50634 )
 
 [node name="sound_fx" type="SamplePlayer" parent="."]
 

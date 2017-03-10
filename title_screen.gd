@@ -10,7 +10,14 @@ func _ready():
 	
 
 func _process(delta):
+	if get_node("anim").is_playing():
+		return
+		
 	for i in range(get_node("/root/player_variables").MAX_NUM_PLAYERS):
+		if Input.is_joy_button_pressed(i, JOY_SELECT):
+			get_node("anim").play("roll_credits")
+			return
+		
 		if Input.is_joy_button_pressed(i, JOY_XBOX_A):
 			get_node("/root/scene_switcher").goto_scene("res://melee.tscn")
 		

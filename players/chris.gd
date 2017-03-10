@@ -452,13 +452,14 @@ func update_state_airbourne(delta):
 	else:
 		under_attack = false
 	
-	var melee = ctrl_queue.get_last_ctrl(0)["melee"]
-	#if melee and time_since_last_melee > 0.5 and not done_action:
-	if melee:
+	var special = ctrl_queue.get_last_ctrl(0)["special"]
+	
+	var attacking = false
+	if special and not done_action:
+		special_attack()
+		set_state(ATTACKING)
 		done_action = true
-		aerial_melee_attack()
-		set_state(ATTACKING) 
-		done_action = true
+		attacking = true
 	
 	var jumping
 	if not done_action:
@@ -481,6 +482,8 @@ func update_state_airbourne(delta):
 	
 	if under_attack:
 		set_state(TAKE)
+	elif attacking:
+		set_state(ATTACKING)
 	elif on_floor:
 		set_state(IDLE)
 	
