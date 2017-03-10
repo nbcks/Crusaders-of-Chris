@@ -631,6 +631,7 @@ var time_taken = 0
 var max_time_taken = 0
 func update_state_take(delta):
 	if max_time_taken <= 0:
+		Input.start_joy_vibration(controller_no, 0.0, 0.7, 0.7)
 		apply_friction = true
 		print("applying attack in take")
 		# get the current attack and apply the force

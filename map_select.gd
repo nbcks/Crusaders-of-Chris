@@ -21,6 +21,7 @@ var cur_map_selected = -1
 const TESTING = 0
 const FINAL_CHRIS = 1
 const PLES_MEWS = 2
+const NEW_RETRO_LEVEL = 3
 
 func map_to_path(no):
 	if no == TESTING:
@@ -29,6 +30,8 @@ func map_to_path(no):
 		return "res://levels/final_chris.tscn"
 	elif no == PLES_MEWS:
 		return "res://levels/pleasant_mews.tscn"
+	elif no == NEW_RETRO_LEVEL:
+		return "res://levels/new_retro_level.tscn"
 	else:
 		breakpoint
 

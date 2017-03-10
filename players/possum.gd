@@ -44,6 +44,9 @@ const MAX_JUMPS = 2
 const SLIDE_STOP_VELOCITY = 1.0 # One pixel per second
 const SLIDE_STOP_MIN_TRAVEL = 1.0 # One pixel
 
+const VIBERATE_WEAK = 50.0
+const VIBERATE_STRONG = 100.0
+
 # physics stuff
 
 var velocity = Vector2()
@@ -626,6 +629,7 @@ var max_time_taken = 0
 func update_state_take(delta):
 	if max_time_taken <= 0:
 		apply_friction = true
+		Input.start_joy_vibration(controller_no, 0.0, 0.7, 0.7)
 		print("applying attack in take")
 		# get the current attack and apply the force
 		var attack = cur_attack_area.get_attack()

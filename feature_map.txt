@@ -30,14 +30,9 @@ Player identifier
 
 TODO art list
 
-- characters
-- cumpetia
-- bridge joints
-    - sphinx
-        - Chrises head
-    - arches
-    - skyscraper background
-        
+- crumpet map
+- bridge map
+
 bugs:
     - player forces are serious imba
     - shieldable being false doesn't affect attacks going through shields

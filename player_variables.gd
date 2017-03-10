@@ -5,6 +5,7 @@ const MAX_NUM_PLAYERS = 5
 # PLAYER ENUM
 const POSSUM = 0
 const CHRIS = 1
+const ANAND_DAD = 2
 
 var players
 
@@ -39,6 +40,8 @@ func player_to_path(no):
 		return "res://players/possum.tscn"
 	elif no == CHRIS:
 		return "res://players/chris.tscn"
+	elif no == ANAND_DAD:
+		return "res://players/anand_dad.tscn"
 	else:
 		breakpoint
 
