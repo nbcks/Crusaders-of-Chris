@@ -18,9 +18,9 @@ const STOP_FORCE = 1500
 const FRICTION = 75
 const LOW_FRICTION = 25
 const STOPPING_BOUND = 100
-const WALK_FORCE = 1000
+const WALK_FORCE = 750
 const WALK_MIN_SPEED = 10
-const WALK_MAX_SPEED = 400
+const WALK_MAX_SPEED = 320
 
 var friction = 0
 

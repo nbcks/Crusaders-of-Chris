@@ -14,13 +14,13 @@ const GRAVITY = 500.0 # Pixels/second
 const FLOOR_ANGLE_TOLERANCE = 40
 
 # walking
-const STOP_FORCE = 1500
+const STOP_FORCE = 2000
 const FRICTION = 75
 const LOW_FRICTION = 25
 const STOPPING_BOUND = 100
-const WALK_FORCE = 1000
+const WALK_FORCE = 1750
 const WALK_MIN_SPEED = 10
-const WALK_MAX_SPEED = 400
+const WALK_MAX_SPEED = 650
 
 var friction = 0
 
@@ -207,7 +207,7 @@ func _fixed_process(delta):
 	force.x = 0
 	force.y = GRAVITY
 	
-	get_node("hurtboxes/punch").is_active = false
+	get_node("hurtboxes/sword").is_active = false
 	
 	if cur_state == AIRBOURNE:
 		update_state_airbourne(delta)
@@ -231,41 +231,14 @@ func _fixed_process(delta):
 
 # major helper functions
 	
-func special_attack():
-	time_since_last_shoot = 0
-	var laser = preload("res://players/laser.tscn").instance()
-	laser.add_collision_exception_with(self)
-	var shoot_pos
-	if facing_left:
-		shoot_pos = get_node("shoot_pos").get_pos()
-	else:
-		shoot_pos = get_node("shoot_pos").get_pos() * Vector2(-1, 0)
-	var pos = get_pos() + shoot_pos
-	laser.set_pos(pos)
-	get_parent().get_parent().add_child(laser)
-	var laser_force = Vector2()
-	if facing_left:
-		laser_force.x = -1000
-	else:
-		laser_force.x = 1000
-	laser.activate(Vector2(laser_force.x, 0))
-	attack_type = SHOOT
-	
 func melee_attack():
 	time_since_last_melee = 0
 	if facing_left:
-		update_anim_if_not("left_punch")
+		update_anim_if_not("swipe_left")
 	else:
-		update_anim_if_not("right_punch")
+		update_anim_if_not("swipe_right")
 	attack_type = PUNCH
 		
-func aerial_melee_attack():
-	time_since_last_melee = 0
-	if facing_left:
-		update_anim_if_not("left_air_attack")
-	else:
-		update_anim_if_not("right_air_attack")
-	attack_type = KICK
 # dealing jumping
 # return true if there is a jump that succeeds, false
 # otherwise 
@@ -329,7 +302,7 @@ func apply_force(delta):
 		else:	
 			var vsign = sign(velocity.x)
 			force.x = -vsign * friction # force needs to go opposite
-			update_anim_if_not("stopping")
+			#update_anim_if_not("stopping")
 		
 	velocity += force * delta
 	var motion = velocity * delta
@@ -415,7 +388,7 @@ func update_state_idle(delta):
 		walking = -1
 		
 	if jumping: # assume we won't hit anything on the jump
-		update_anim_if_not("jump")
+		#update_anim_if_not("jump")
 		set_state(AIRBOURNE)
 	elif walking >= 0:
 		if walking == 0:
@@ -427,7 +400,10 @@ func update_state_idle(delta):
 			breakpoint
 		set_state(WALKING)
 	elif not done_action:
-		update_anim_if_not("idle")
+		if facing_left:
+			update_anim_if_not("left_idle")
+		else:
+			update_anim_if_not("right_idle")
 	
 	friction = FRICTION
 	var on_floor = apply_force(delta)
@@ -450,7 +426,7 @@ func update_state_airbourne(delta):
 	#if melee and time_since_last_melee > 0.5 and not done_action:
 	if melee:
 		done_action = true
-		aerial_melee_attack()
+		#aerial_melee_attack()
 		set_state(ATTACKING) 
 		done_action = true
 	
@@ -483,7 +459,7 @@ func update_state_attacking(delta):
 	var leave_state = false
 	# set hitboxes to active
 	if attack_type == PUNCH or attack_type == KICK:
-		get_node("hurtboxes/punch").is_active = true
+		get_node("hurtboxes/sword").is_active = true
 	
 	var under_attack 
 	if under_attack():
@@ -494,7 +470,7 @@ func update_state_attacking(delta):
 	else:
 		under_attack = false
 	if not under_attack:
-		var hurt_box = get_node("hurtboxes/punch")
+		var hurt_box = get_node("hurtboxes/sword")
 		if max_time_attacking <= 0:
 			if attack_type == PUNCH:
 				hurt_box.set_possum_punch()
@@ -581,7 +557,7 @@ func update_state_walking(delta):
 		walking = -1
 		
 	if jumping: # assume we won't hit anything on the jump
-		update_anim_if_not("jump")
+		#update_anim_if_not("jump")
 		set_state(AIRBOURNE)
 	elif walking >= 0:
 		if walking == 0:
@@ -592,7 +568,7 @@ func update_state_walking(delta):
 		print("walking -> attacking")
 		set_state(ATTACKING)
 	elif not done_action:
-		update_anim_if_not("stopping")
+		#update_anim_if_not("stopping")
 		set_state(STOPPING)
 	
 	friction = 0
@@ -612,7 +588,7 @@ func update_state_stopping(delta):
 	else:	
 		var vsign = sign(velocity.x)
 		force.x = -vsign * STOP_FORCE # force needs to go opposite
-		update_anim_if_not("stopping")
+		#update_anim_if_not("stopping")
 	
 	# friction already implemented here
 	friction = 0
@@ -746,14 +722,11 @@ func update_state_stunned(delta):
 			set_state(AIRBOURNE)
 		else:
 			set_state(IDLE)
-	
-#func update_anim_if_not(track):
-#	var anim = get_node("anim")
-#	if anim.get_current_animation() != track or not anim.is_active():
-#		anim.play(track)
-
+#	
 func update_anim_if_not(track):
-	pass
+	var anim = get_node("anim")
+	if anim.get_current_animation() != track or not anim.is_active():
+		anim.play(track)
 
 # deal with attacks
 func _on_hit(area):
@@ -761,7 +734,7 @@ func _on_hit(area):
 	if area in get_node("hurtboxes").get_children() or area == get_node("hitbox"):
 		return
 	var attack = null
-	#print("player ", player_no, "has been HIT by: ", area, " hitbox: ", get_node("hitbox"), " hurtbox: ", get_node("hurtboxes/punch"))
+	#print("player ", player_no, "has been HIT by: ", area, " hitbox: ", get_node("hitbox"), " hurtbox: ", get_node("hurtboxes/sword"))
 	
 	if area.has_method("get_attack"):
 		attack = area.get_attack()

@@ -234,7 +234,7 @@ transform/pos = Vector2( 939.149, 542.917 )
 
 [node name="1" type="Position2D" parent="spawns"]
 
-transform/pos = Vector2( -789.408, 125.446 )
+transform/pos = Vector2( -529.02, 337.08 )
 
 [node name="2" type="Position2D" parent="spawns"]
 
@@ -246,11 +246,11 @@ transform/pos = Vector2( 442.086, 101.329 )
 
 [node name="4" type="Position2D" parent="spawns"]
 
-transform/pos = Vector2( 838.516, 101.329 )
+transform/pos = Vector2( 549.735, 355.978 )
 
 [node name="5" type="Position2D" parent="spawns"]
 
-transform/pos = Vector2( 20.0333, 105.851 )
+transform/pos = Vector2( 25.1274, -504.706 )
 
 [node name="music" type="StreamPlayer" parent="."]
 

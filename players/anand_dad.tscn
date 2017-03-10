@@ -1,26 +1,10 @@
-[gd_scene load_steps=61 format=1]
+[gd_scene load_steps=37 format=1]
 
 [ext_resource path="res://players/anand_dad.gd" type="Script" id=1]
 [ext_resource path="res://art/players/shield.png" type="Texture" id=2]
 [ext_resource path="res://art/characters/anand_dad/samurai_sprites/anand_dad.png" type="Texture" id=3]
-[ext_resource path="res://art/characters/possum/static1.png" type="Texture" id=4]
-[ext_resource path="res://art/characters/possum/static2.png" type="Texture" id=5]
-[ext_resource path="res://art/characters/possum/static3.png" type="Texture" id=6]
-[ext_resource path="res://art/characters/possum/static4.png" type="Texture" id=7]
-[ext_resource path="res://art/characters/possum/jump1.png" type="Texture" id=8]
-[ext_resource path="res://art/characters/possum/jump2.png" type="Texture" id=9]
-[ext_resource path="res://art/characters/possum/jump3.png" type="Texture" id=10]
-[ext_resource path="res://art/characters/possum/jump4.png" type="Texture" id=11]
-[ext_resource path="res://art/characters/possum/jump-kick.png" type="Texture" id=12]
-[ext_resource path="res://art/characters/possum/hit2.png" type="Texture" id=13]
-[ext_resource path="res://art/characters/possum/hit1.png" type="Texture" id=14]
-[ext_resource path="res://art/characters/possum/hit3_adjusted.png" type="Texture" id=15]
-[ext_resource path="res://art/characters/possum/walk4.png" type="Texture" id=16]
-[ext_resource path="res://art/characters/possum/walk1.png" type="Texture" id=17]
-[ext_resource path="res://art/characters/possum/walk2.png" type="Texture" id=18]
-[ext_resource path="res://art/characters/possum/walk3.png" type="Texture" id=19]
-[ext_resource path="res://players/possum_punch.gd" type="Script" id=20]
-[ext_resource path="res://sounds/hit_fx.wav" type="Sample" id=21]
+[ext_resource path="res://players/possum_punch.gd" type="Script" id=4]
+[ext_resource path="res://sounds/hit_fx.wav" type="Sample" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -122,256 +106,143 @@ extents = Vector2( 17.3398, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 23.4628, 10 )
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=48]
 
+resource/name = "left_idle"
+length = 0.1
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 18 ] }
+
+[sub_resource type="Animation" id=49]
+
+resource/name = "right_idle"
+length = 0.1
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 12 ] }
+
+[sub_resource type="RectangleShape2D" id=46]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1.49282, 11.6362 )
+
+[sub_resource type="SegmentShape2D" id=47]
+
+custom_solver_bias = 0.0
+a = Vector2( 0.0434666, 6.69414 )
+b = Vector2( 0, 10 )
+
+[sub_resource type="Animation" id=43]
+
+resource/name = "swipe_left"
 length = 1.0
 loop = false
-step = 0.1
-
-[sub_resource type="SegmentShape2D" id=22]
-
-custom_solver_bias = 0.0
-a = Vector2( 0.300789, 7.2186 )
-b = Vector2( 0, 10 )
-
-[sub_resource type="Animation" id=23]
-
-length = 1.5
-loop = true
-step = 0.1
+step = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.5, 1, 1.5 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ] }
+tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ 18, 21, 22, 23, 18 ] }
 tracks/1/type = "value"
-tracks/1/path = NodePath("hurtboxes/punch/col_rect:shape")
+tracks/1/path = NodePath("hurtboxes/sword/col_rect:shape")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ SubResource( 22 ) ] }
+tracks/1/keys = { "times":FloatArray( 0, 0.2, 1 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ SubResource( 46 ), SubResource( 46 ), SubResource( 47 ) ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("hurtboxes/sword/col_rect:transform/pos")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -6.56481, -19.1829 ), Vector2( 14.1527, -13.4706 ), Vector2( -17.1367, -14.579 ), Vector2( -15.6873, -1.02308 ), Vector2( 0.170496, -11.3392 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("hurtboxes/sword/col_rect:transform/rot")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = { "times":FloatArray( 0, 0.2, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 46.0, 90.0, 0.0 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("hurtboxes/sword/pos:transform/pos")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( -6.32223, -8.83846 ), Vector2( 16.1857, -11.3109 ), Vector2( -16.8089, -14.2097 ), Vector2( -15.871, -0.909541 ) ] }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="RectangleShape2D" id=44]
 
-length = 1.2
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:texture")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 8 ) ] }
+custom_solver_bias = 0.0
+extents = Vector2( 1.76924, 12.0254 )
 
-[sub_resource type="SegmentShape2D" id=25]
+[sub_resource type="SegmentShape2D" id=45]
 
 custom_solver_bias = 0.0
 a = Vector2( 0, 0 )
-b = Vector2( 0, 10 )
+b = Vector2( -0.0522355, 1.6174 )
 
-[sub_resource type="RectangleShape2D" id=26]
+[sub_resource type="Animation" id=42]
 
-custom_solver_bias = 0.0
-extents = Vector2( 22.7845, 4.49223 )
-
-[sub_resource type="SegmentShape2D" id=27]
-
-custom_solver_bias = 0.0
-a = Vector2( 0, 0 )
-b = Vector2( 0, 10 )
-
-[sub_resource type="RectangleShape2D" id=28]
-
-custom_solver_bias = 0.0
-extents = Vector2( 15.8671, 5.27238 )
-
-[sub_resource type="SegmentShape2D" id=29]
-
-custom_solver_bias = 0.0
-a = Vector2( 0, 0 )
-b = Vector2( 0, 10 )
-
-[sub_resource type="Animation" id=30]
-
-resource/name = "left_air_attack"
-length = 0.6
-loop = false
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:texture")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45, 0.45, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 10 ) ] }
-tracks/1/type = "value"
-tracks/1/path = NodePath("sprite:flip_h")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
-tracks/2/type = "value"
-tracks/2/path = NodePath("hurtboxes/punch/col_rect:shape")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.3, 0.45, 0.45, 0.55, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1 ), "update":1, "values":[ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 28 ), SubResource( 29 ) ] }
-tracks/3/type = "value"
-tracks/3/path = NodePath("hurtboxes/punch/col_rect:transform/pos")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0, 0.3, 0.45, 0.5, 0.55, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 4.12348, -3.51006 ), Vector2( -13.7959, 5.71315 ), Vector2( 16.0478, 3.5391 ), Vector2( -0.35635, -2.98302 ), Vector2( -10.2383, 5.18609 ), Vector2( -0.0928307, -3.51006 ) ] }
-tracks/4/type = "value"
-tracks/4/path = NodePath("hurtboxes/punch/pos:transform/pos")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0.3, 0.35 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( -19.7227, -0.862996 ), Vector2( -21.5674, -1.12652 ) ] }
-
-[sub_resource type="RectangleShape2D" id=31]
-
-custom_solver_bias = 0.0
-extents = Vector2( 24.6292, 4.49221 )
-
-[sub_resource type="SegmentShape2D" id=32]
-
-custom_solver_bias = 0.0
-a = Vector2( 0, 0 )
-b = Vector2( 0, 10 )
-
-[sub_resource type="Animation" id=33]
-
-length = 0.6
-loop = false
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:texture")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ) ] }
-tracks/1/type = "value"
-tracks/1/path = NodePath("sprite:flip_h")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
-tracks/2/type = "value"
-tracks/2/path = NodePath("hurtboxes/punch/col_rect:shape")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.3, 0.45 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ SubResource( 25 ), SubResource( 31 ), SubResource( 32 ) ] }
-tracks/3/type = "value"
-tracks/3/path = NodePath("hurtboxes/punch/col_rect:transform/pos")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0, 0.3, 0.45 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ Vector2( -0.35635, -2.98302 ), Vector2( -22.4921, 4.13203 ), Vector2( 0.434216, 1.76033 ) ] }
-tracks/4/type = "value"
-tracks/4/path = NodePath("hurtboxes/punch/pos:transform/pos")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0.3 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( -22.3579, 3.61684 ) ] }
-
-[sub_resource type="Animation" id=34]
-
-resource/name = "right_air_attack"
-length = 0.6
-loop = false
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:texture")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45, 0.45, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 10 ) ] }
-tracks/1/type = "value"
-tracks/1/path = NodePath("sprite:flip_h")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
-tracks/2/type = "value"
-tracks/2/path = NodePath("hurtboxes/punch/col_rect:shape")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.3, 0.45, 0.45, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ] }
-tracks/3/type = "value"
-tracks/3/path = NodePath("hurtboxes/punch/col_rect:transform/pos")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0, 0.3, 0.45, 0.5, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 4.12348, -3.51006 ), Vector2( 16.7724, 4.13203 ), Vector2( 16.0478, 3.5391 ), Vector2( -0.35635, -2.98302 ), Vector2( -0.0928307, -3.51006 ) ] }
-tracks/4/type = "value"
-tracks/4/path = NodePath("hurtboxes/punch/pos:transform/pos")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0.3 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 24.2851, 3.35332 ) ] }
-
-[sub_resource type="Animation" id=35]
-
-length = 0.6
-loop = false
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:texture")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.15, 0.3, 0.45, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ) ] }
-tracks/1/type = "value"
-tracks/1/path = NodePath("sprite:flip_h")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
-tracks/2/type = "value"
-tracks/2/path = NodePath("hurtboxes/punch/col_rect:shape")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.3, 0.45 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ] }
-tracks/3/type = "value"
-tracks/3/path = NodePath("hurtboxes/punch/col_rect:transform/pos")
-tracks/3/interp = 1
-tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0, 0.3, 0.5 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ Vector2( 4.12348, -3.51006 ), Vector2( 22.5698, 4.13203 ), Vector2( -0.35635, -2.98302 ) ] }
-tracks/4/type = "value"
-tracks/4/path = NodePath("hurtboxes/punch/pos:transform/pos")
-tracks/4/interp = 1
-tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0.3 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 24.2851, 3.35332 ) ] }
-
-[sub_resource type="Animation" id=36]
-
+resource/name = "swipe_right"
 length = 1.0
-loop = true
-step = 0.1
+loop = false
+step = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ ExtResource( 16 ) ] }
-
-[sub_resource type="Animation" id=37]
-
-length = 0.8
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:texture")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 16 ) ] }
+tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ 12, 15, 16, 17, 14 ] }
 tracks/1/type = "value"
-tracks/1/path = NodePath("sprite:flip_h")
+tracks/1/path = NodePath("hurtboxes/sword/col_rect:shape")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
+tracks/1/keys = { "times":FloatArray( 0, 0.4, 1 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ SubResource( 44 ), SubResource( 44 ), SubResource( 45 ) ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("hurtboxes/sword/col_rect:transform/pos")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 7.49417, -19.2074 ), Vector2( -13.2312, -12.4036 ), Vector2( 18.2755, -15.4392 ), Vector2( 17.4382, -0.680205 ), Vector2( 0, 0 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("hurtboxes/sword/col_rect:transform/rot")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6, 1 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":0, "values":[ 0.0, 135.0, 320.0, 90.0, 0.0 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("hurtboxes/sword/pos:transform/pos")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":0, "values":[ Vector2( 7.91572, -20.8597 ), Vector2( -13.5691, -12.2487 ), Vector2( 15.5036, -12.5045 ), Vector2( 18.2318, -1.50634 ) ] }
 
-[sub_resource type="Animation" id=38]
+[sub_resource type="Animation" id=41]
 
+resource/name = "walk_left"
 length = 0.8
 loop = true
-step = 0.1
+step = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 16 ) ] }
-tracks/1/type = "value"
-tracks/1/path = NodePath("sprite:flip_h")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ false ] }
+tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 18, 19, 18, 20 ] }
+
+[sub_resource type="Animation" id=40]
+
+resource/name = "walk_right"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4, 0.6 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ 12, 13, 12, 14 ] }
 
 [sub_resource type="SampleLibrary" id=39]
 
-samples/hit_fx = { "db":0.0, "pitch":1.0, "sample":ExtResource( 21 ) }
+samples/hit_fx = { "db":0.0, "pitch":1.0, "sample":ExtResource( 5 ) }
 
 [node name="anand_dad" type="KinematicBody2D"]
 
@@ -438,9 +309,9 @@ texture = ExtResource( 2 )
 [node name="sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 3 )
-flip_h = true
 vframes = 10
 hframes = 6
+frame = 13
 
 [node name="centre" type="Position2D" parent="."]
 
@@ -459,6 +330,7 @@ trigger = false
 [node name="hitbox" type="Area2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 17 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 2.43687, 0 )
@@ -510,20 +382,14 @@ _update_shape_index = 3
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-"anims/hurtbox test" = SubResource( 21 )
-anims/idle = SubResource( 23 )
-anims/jump = SubResource( 24 )
-anims/left_air_attack = SubResource( 30 )
-anims/left_punch = SubResource( 33 )
-anims/right_air_attack = SubResource( 34 )
-anims/right_punch = SubResource( 35 )
-anims/stopping = SubResource( 36 )
-anims/walk_left = SubResource( 37 )
-anims/walk_right = SubResource( 38 )
-next/idle = ""
-next/left_air_attack = ""
-next/right_air_attack = ""
-next/stopping = ""
+anims/left_idle = SubResource( 48 )
+anims/right_idle = SubResource( 49 )
+anims/swipe_left = SubResource( 43 )
+anims/swipe_right = SubResource( 42 )
+anims/walk_left = SubResource( 41 )
+anims/walk_right = SubResource( 40 )
+next/right_idle = ""
+next/walk_left = ""
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -531,34 +397,30 @@ autoplay = ""
 
 [node name="hurtboxes" type="Node2D" parent="."]
 
-[node name="punch" type="Area2D" parent="hurtboxes"]
+[node name="sword" type="Area2D" parent="hurtboxes"]
 
 transform/pos = Vector2( -0.858551, 0.858555 )
 input/pickable = true
-shapes/0/shape = SubResource( 27 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.35635, -2.98302 )
+shapes/0/shape = SubResource( 46 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -6.56481, -19.1829 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 20 )
+script/script = ExtResource( 4 )
 
-[node name="col_rect" type="CollisionShape2D" parent="hurtboxes/punch"]
+[node name="col_rect" type="CollisionShape2D" parent="hurtboxes/sword"]
 
-transform/pos = Vector2( -0.35635, -2.98302 )
-shape = SubResource( 27 )
+transform/pos = Vector2( -6.56481, -19.1829 )
+transform/scale = Vector2( 1, 1 )
+shape = SubResource( 46 )
 trigger = false
 _update_shape_index = 0
 
-[node name="pos" type="Position2D" parent="hurtboxes/punch"]
+[node name="pos" type="Position2D" parent="hurtboxes/sword"]
 
-transform/pos = Vector2( 24.2851, 3.35332 )
-
-[node name="shoot_pos" type="Position2D" parent="."]
-
-visibility/visible = false
-transform/pos = Vector2( -44.9743, 1.74023 )
+transform/pos = Vector2( -6.32223, -8.83846 )
 
 [node name="sound_fx" type="SamplePlayer" parent="."]
 
